@@ -7,7 +7,7 @@ public class PianoTile : MonoBehaviour
 {
     public GameObject[] pianoTiles;
 
-    private string tiles;
+    // private string tiles;
 
     [SerializeField] private Material clicked;
 
@@ -26,31 +26,31 @@ public class PianoTile : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
         pianoTiles[1].GetComponent<Renderer>().materials[1] = clicked;
         AudioSource.PlayClipAtPoint(pianoClip, clipLocation.transform.position, 0.7f);
-        tiles = "B";
+        // tiles = "B";
         yield return new WaitForSeconds(delayTime);
         pianoTiles[3].GetComponent<Renderer>().materials[1] = clicked;
         AudioSource.PlayClipAtPoint(pianoClip, clipLocation.transform.position, 0.7f);
-        tiles = "D";
+        // tiles = "D";
         yield return new WaitForSeconds(delayTime);
         pianoTiles[5].GetComponent<Renderer>().materials[1] = clicked;
         AudioSource.PlayClipAtPoint(pianoClip, clipLocation.transform.position, 0.7f);
-        tiles = "F";
+        // tiles = "F";
         yield return new WaitForSeconds(delayTime);
         pianoTiles[2].GetComponent<Renderer>().materials[1] = clicked;
         AudioSource.PlayClipAtPoint(pianoClip, clipLocation.transform.position, 0.7f);
-        tiles = "C";
+        // tiles = "C";
         yield return new WaitForSeconds(delayTime);
         pianoTiles[0].GetComponent<Renderer>().materials[1] = clicked;
         AudioSource.PlayClipAtPoint(pianoClip, clipLocation.transform.position, 0.7f);
-        tiles = "A";
+        // tiles = "A";
         yield return new WaitForSeconds(delayTime);
         pianoTiles[4].GetComponent<Renderer>().materials[1] = clicked;
         AudioSource.PlayClipAtPoint(pianoClip, clipLocation.transform.position, 0.7f);
-        tiles = "E";
+        // tiles = "E";
         yield return new WaitForSeconds(delayTime);
         pianoTiles[6].GetComponent<Renderer>().materials[1] = clicked;
         AudioSource.PlayClipAtPoint(pianoClip, clipLocation.transform.position, 0.7f);
-        tiles = "G";
+        // tiles = "G";
     }
 
     void FindTiles()
