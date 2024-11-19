@@ -36,24 +36,24 @@ public class PianoTile : MonoBehaviour
         AudioSource.PlayClipAtPoint(pianoClip, clipLocation.transform.position, 0.7f);
         tiles = "F";
         yield return new WaitForSeconds(delayTime);
-        pianoTiles[2].GetComponent<Renderer>().materials[1]= clicked;
+        pianoTiles[2].GetComponent<Renderer>().materials[1] = clicked;
         AudioSource.PlayClipAtPoint(pianoClip, clipLocation.transform.position, 0.7f);
         tiles = "C";
         yield return new WaitForSeconds(delayTime);
-        pianoTiles[0].GetComponent<Renderer>().materials[1]= clicked;
+        pianoTiles[0].GetComponent<Renderer>().materials[1] = clicked;
         AudioSource.PlayClipAtPoint(pianoClip, clipLocation.transform.position, 0.7f);
         tiles = "A";
         yield return new WaitForSeconds(delayTime);
-        pianoTiles[4].GetComponent<Renderer>().materials[1]= clicked;
+        pianoTiles[4].GetComponent<Renderer>().materials[1] = clicked;
         AudioSource.PlayClipAtPoint(pianoClip, clipLocation.transform.position, 0.7f);
         tiles = "E";
         yield return new WaitForSeconds(delayTime);
-        pianoTiles[6].GetComponent<Renderer>().materials[1]= clicked;
+        pianoTiles[6].GetComponent<Renderer>().materials[1] = clicked;
         AudioSource.PlayClipAtPoint(pianoClip, clipLocation.transform.position, 0.7f);
         tiles = "G";
     }
 
-void FindTiles()
+    void FindTiles()
     {
         if (pianoTiles[0] = GameObject.Find("A tile"))
             Debug.Log("Found A tile");
@@ -68,7 +68,7 @@ void FindTiles()
         if (pianoTiles[5] = GameObject.Find("F tile"))
             Debug.Log("Found F tile");
         if (pianoTiles[6] = GameObject.Find("G tile"))
-            Debug.Log("Found G tile");   
+            Debug.Log("Found G tile");
     }
-    
+
 }
