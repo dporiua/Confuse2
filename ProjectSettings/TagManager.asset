@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: MazePaper
+    uniqueID: 2148878945
+    locked: 0
+  - name: Newspapers
+    uniqueID: 2736965059
+    locked: 0
+  - name: OpennedNewspapers
+    uniqueID: 560660573
+    locked: 0
