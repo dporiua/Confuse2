@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2477205042218671991}
   - component: {fileID: 1198174888046417998}
+  - component: {fileID: 8450092674483652683}
   m_Layer: 0
   m_Name: Line
   m_TagString: Untagged
@@ -85,7 +86,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0.0068969727
-        value: 0.08584595
+        value: 0.13635254
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -136,3 +137,20 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &8450092674483652683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300815095509245931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 092a6368784c4274bb650d7ad6334480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterials: []
+  errorMaterials: []
+  lineRenderer: {fileID: 1198174888046417998}
+  selectedDefaultMaterial: 0
+  selectedErrorMaterial: 0
