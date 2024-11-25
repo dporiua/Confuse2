@@ -3,7 +3,11 @@ guid: 358ce5a15076f8048bbcd07a2cd62928
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - mazeTexture: {fileID: 2800000, guid: 0c71fb22ec3ef2e47a0e4e4050008327, type: 3}
+  - lineRendererPrefab: {instanceID: 0}
+  - mainCamera: {instanceID: 0}
+  - lineColourChanger: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

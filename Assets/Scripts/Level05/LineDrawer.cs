@@ -1,33 +1,30 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Dana
 {
     /// <summary>
-    /// This script is meant to draw a line on a 'paper' layer.
+    /// This script is meant to draw a line if the texture pixel is not black.
     /// It uses LineRenderer to render line points and delete them if
-    /// they reach incorrect bounds/ player does not reach the end.
+    /// they reach touch mazeWallColour which represents the colour of the maze's wall.
     /// </summary>
 
     public class LineDrawer : MonoBehaviour
     {
         #region Variables
-        public LineRenderer linePrefab;
-        public Material mainLineMaterial;
-        public Material warningLineMaterial;
-        public Transform startPoint;
-        public Transform endPoint;
-        public Collider mazeBounds;
-        public LayerMask paperLayer;
-        public LayerMask mazeWallLayer;
+        [SerializeField] private Texture2D mazeTexture;
+        [SerializeField] private Color mazeWallColour = Color.black;
+        [SerializeField] private Color mazeGroundColour = Color.white;
+        [SerializeField] private GameObject lineRendererPrefab;
+        [SerializeField] private Camera mainCamera;
+
+        private LineRenderer _currentLine;
+        private List<Vector3> _linePoints = new List<Vector3>();
+        private bool _isDrawing = false;
 
         [Header("Script references")]
         [SerializeField] private LineColourChanger lineColourChanger;
-
-        private LineRenderer _currentLine;
-        private Vector3 _lastPosition;
-        private bool _isDrawing = false;
-
-        private const float PointsDistance = 0.1f;
 
         #endregion
 
@@ -41,116 +38,107 @@ namespace Dana
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Vector3 mousePosition = GetMousePositionOnPaper();
-                if (IsLineInsideCollider(startPoint.GetComponent<Collider>(), mousePosition))
-                {
-                    Debug.Log("Start point clicked. Beginning drawing.");
-                    StartDrawing(mousePosition);
-                }
-                else
-                {
-                    Debug.Log("Mouse not on start point.");
-                }
+                StartDrawing();
             }
 
 
             if (_isDrawing && Input.GetMouseButton(0))
             {
-                Vector3 mousePosition = GetMousePositionOnPaper();
-
-                if (mousePosition != Vector3.zero && IsLinePointValid(mousePosition))
-                {
-                    if (Vector3.Distance(mousePosition, _lastPosition) > PointsDistance)
-                    {
-                        AddPoint(mousePosition);
-                    }
-                }
-                else
-                {
-                    ResetDrawing();
-                }
+                AddPoint();
             }
 
             if (Input.GetMouseButtonUp(0))
             {
-                Vector3 mousePosition = GetMousePositionOnPaper();
+                _isDrawing = false;
+                // FinishTheDrawing();
+            }
+        }
 
-                if (mousePosition != Vector3.zero && IsLineInsideCollider(endPoint.GetComponent<Collider>(), mousePosition))
+        /// <summary>
+        /// Tells the game that the player started drawing. Instantiates line prefab 
+        /// several times to form a line.
+        /// </summary>
+        private void StartDrawing()
+        {
+            _isDrawing = true;
+
+            GameObject line = Instantiate(lineRendererPrefab, Vector3.zero, Quaternion.identity);
+            _currentLine = line.GetComponent<LineRenderer>();
+            _linePoints.Clear();
+
+            _currentLine.sortingLayerName = "MazePaper";
+            _currentLine.sortingOrder = 10;
+        }
+
+        /// <summary>
+        /// Adds line points epending on where the mouse position and saves their positions. 
+        /// Positions get cleared when line hits a wall.
+        /// </summary>
+        private void AddPoint()
+        {
+            Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0;
+
+            Vector2 textureCoord = WorldToTextureCoordination(mousePosition);
+
+            if (_linePoints.Count == 0 || Vector3.Distance(mousePosition, _linePoints[_linePoints.Count - 1]) > 0.1f)
+            {
+                _linePoints.Add(mousePosition);
+                _currentLine.positionCount = _linePoints.Count;
+                _currentLine.SetPositions(_linePoints.ToArray());
+
+                if (IsLineCollidingWithMazeWall(mousePosition))
                 {
-                    FinishDrawing();
-                }
-                else
-                {
-                    ResetDrawing();
+                    ClearCurrentLine();
                 }
             }
         }
 
-        private void StartDrawing(Vector3 startPosition)
+
+
+        /// <summary>
+        /// Reads the texture's pixels to determine whether the line hit the maze wall or not.
+        /// </summary>
+        private bool ColorsMatch(Color a, Color b, float tolerance = 0.01f)
         {
-            _isDrawing = true;
-            _currentLine = Instantiate(linePrefab);
-            _currentLine.material = mainLineMaterial;
-            _currentLine.positionCount = 1;
-            _currentLine.SetPosition(0, startPosition);
-            _lastPosition = startPosition;
+            return Mathf.Abs(a.r - b.r) < tolerance &&
+                   Mathf.Abs(a.g - b.g) < tolerance &&
+                   Mathf.Abs(a.b - b.b) < tolerance;
         }
 
-        private void AddPoint(Vector3 position)
+        private bool IsLineCollidingWithMazeWall(Vector3 position)
         {
-            _currentLine.positionCount++;
-            _currentLine.SetPosition(_currentLine.positionCount - 1, position);
-            _lastPosition = position;
+            Vector2 pixelPosition = WorldToTextureCoordination(position);
+            if (pixelPosition.x >= 0 && pixelPosition.y >= 0 && pixelPosition.x < mazeTexture.width && pixelPosition.y < mazeTexture.height)
+            {
+                Color pixelColour = mazeTexture.GetPixel((int)pixelPosition.x, (int)pixelPosition.y);
+                return ColorsMatch(pixelColour, mazeWallColour);
+            }
+            return false;
         }
 
-        private void FinishDrawing()
+
+        private void FinishTheDrawing()
         {
-            _isDrawing = false;
-            Debug.Log("'Player won!'"); // will add a constraint to not render a line here unless the player started from start point to finish.
+
         }
 
-        private void ResetDrawing()
+        private Vector2 WorldToTextureCoordination(Vector3 worldPosition)
         {
-            _isDrawing = false;
+            Vector3 spritePosition = transform.position;
+            Vector2 localPosition = new Vector2((worldPosition.x - spritePosition.x) / transform.localScale.x + 0.5f, (worldPosition.y - spritePosition.y) / transform.localScale.y + 0.5f);
+            return new Vector2(localPosition.x * mazeTexture.width, localPosition.y * mazeTexture.height);
+        }
+
+        private void ClearCurrentLine()
+        {
             if (_currentLine != null)
             {
                 Destroy(_currentLine.gameObject);
             }
-            Debug.Log("reseting the drawing.");
+            _linePoints.Clear();
+            _isDrawing = false;
         }
-
-
-        private bool IsLinePointValid(Vector3 point)
-        {
-            if (Physics.CheckSphere(point, 0.05f, mazeWallLayer))
-            {
-                Debug.Log("not a valid linePoint");
-                return false;
-            }
-            return mazeBounds.bounds.Contains(point);
-        }
-
-        private bool IsLineInsideCollider(Collider collider, Vector3 linePoint)
-        {
-            return collider.bounds.Contains(linePoint);
-        }
-
-        #region Cam related function
-        private Vector3 GetMousePositionOnPaper()
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, paperLayer))
-            {
-                return hit.point;
-            }
-
-            Debug.Log("Raycast did not hit the paper.");
-            return Vector3.zero;
-        }
-
-        #endregion
         #endregion
     }
 }
