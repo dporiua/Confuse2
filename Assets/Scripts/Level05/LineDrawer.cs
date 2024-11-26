@@ -1,21 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Dana
 {
     /// <summary>
     /// This script is meant to draw a line if the texture pixel is not black.
     /// It uses LineRenderer to render line points and delete them if
-    /// they reach touch mazeWallColour which represents the colour of the maze's wall.
+    /// they reach the mazeWallColour or the player releases the left mouse button.
     /// </summary>
-
+ 
     public class LineDrawer : MonoBehaviour
     {
         #region Variables
         [SerializeField] private Texture2D mazeTexture;
-        [SerializeField] private Color mazeWallColour = Color.black;
-        [SerializeField] private Color mazeGroundColour = Color.white;
+        [SerializeField] private Color mazeWallColour;
+        [SerializeField] private Color mazeGroundColour;
         [SerializeField] private GameObject lineRendererPrefab;
         [SerializeField] private Camera mainCamera;
 
@@ -41,7 +40,6 @@ namespace Dana
                 StartDrawing();
             }
 
-
             if (_isDrawing && Input.GetMouseButton(0))
             {
                 AddPoint();
@@ -49,8 +47,7 @@ namespace Dana
 
             if (Input.GetMouseButtonUp(0))
             {
-                _isDrawing = false;
-                // FinishTheDrawing();
+                ClearCurrentLine();
             }
         }
 
@@ -81,30 +78,56 @@ namespace Dana
 
             Vector2 textureCoord = WorldToTextureCoordination(mousePosition);
 
+            if (!IsPointOnMazeGround(textureCoord))
+            {
+                ClearCurrentLine();
+                return;
+            }
+
             if (_linePoints.Count == 0 || Vector3.Distance(mousePosition, _linePoints[_linePoints.Count - 1]) > 0.1f)
             {
+                if (CheckIntermediateCollisions(mousePosition))
+                {
+                    ClearCurrentLine();
+                    return;
+                }
+
                 _linePoints.Add(mousePosition);
                 _currentLine.positionCount = _linePoints.Count;
                 _currentLine.SetPositions(_linePoints.ToArray());
-
-                if (IsLineCollidingWithMazeWall(mousePosition))
-                {
-                    ClearCurrentLine();
-                }
             }
         }
 
-
-
-        /// <summary>
-        /// Reads the texture's pixels to determine whether the line hit the maze wall or not.
-        /// </summary>
-        private bool ColorsMatch(Color a, Color b, float tolerance = 0.01f)
+        private bool CheckIntermediateCollisions(Vector3 newPoint)
         {
-            return Mathf.Abs(a.r - b.r) < tolerance &&
-                   Mathf.Abs(a.g - b.g) < tolerance &&
-                   Mathf.Abs(a.b - b.b) < tolerance;
+            if (_linePoints.Count == 0) return false;
+
+            Vector3 lastPoint = _linePoints[_linePoints.Count - 1];
+            int steps = 10;
+            for (int i = 1; i <= steps; i++)
+            {
+                Vector3 intermediatePoint = Vector3.Lerp(lastPoint, newPoint, i / (float)steps);
+                Vector2 textureCoord = WorldToTextureCoordination(intermediatePoint);
+
+                if (!IsPointOnMazeGround(textureCoord) || IsLineCollidingWithMazeWall(intermediatePoint))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
+
+        private bool IsPointOnMazeGround(Vector2 textureCoord)
+        {
+            if (textureCoord.x >= 0 && textureCoord.y >= 0 && textureCoord.x < mazeTexture.width && textureCoord.y < mazeTexture.height)
+            {
+                Color pixelColour = mazeTexture.GetPixel((int)textureCoord.x, (int)textureCoord.y);
+                return ColorsMatch(pixelColour, mazeGroundColour);
+            }
+            return false;
+        }
+
 
         private bool IsLineCollidingWithMazeWall(Vector3 position)
         {
@@ -117,17 +140,23 @@ namespace Dana
             return false;
         }
 
-
-        private void FinishTheDrawing()
+        private bool ColorsMatch(Color a, Color b, float tolerance = 0.01f)
         {
-
+            return Mathf.Abs(a.r - b.r) < tolerance &&
+                   Mathf.Abs(a.g - b.g) < tolerance &&
+                   Mathf.Abs(a.b - b.b) < tolerance;
         }
 
         private Vector2 WorldToTextureCoordination(Vector3 worldPosition)
         {
             Vector3 spritePosition = transform.position;
-            Vector2 localPosition = new Vector2((worldPosition.x - spritePosition.x) / transform.localScale.x + 0.5f, (worldPosition.y - spritePosition.y) / transform.localScale.y + 0.5f);
-            return new Vector2(localPosition.x * mazeTexture.width, localPosition.y * mazeTexture.height);
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            Bounds bounds = spriteRenderer.bounds;
+
+            float xNormalized = (worldPosition.x - bounds.min.x) / bounds.size.x;
+            float yNormalized = (worldPosition.y - bounds.min.y) / bounds.size.y;
+
+            return new Vector2(xNormalized * mazeTexture.width, yNormalized * mazeTexture.height);
         }
 
         private void ClearCurrentLine()
