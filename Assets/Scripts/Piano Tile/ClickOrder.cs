@@ -17,7 +17,7 @@ public class ClickOrder : MonoBehaviour
     {
      if (endOfList == 7)
      {
-            SceneManager.LoadScene("Level003");
+            SceneManager.LoadScene("Level03");
      }
     }
     

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TMP_Text timer;
-    [SerializeField] private GameObject endGamePanel;
+    // [SerializeField] private GameObject endGamePanel;
 
     private float countdown;
     private float numberDown = 20;
@@ -16,7 +16,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        endGamePanel.SetActive(false);
+        /// endGamePanel.SetActive(false);
         countdown = _initialCountdown;
     }
 
@@ -36,7 +36,8 @@ public class Timer : MonoBehaviour
 
         if (countdown <= 0)
         {
-            endGamePanel.SetActive(true);
+            // endGamePanel.SetActive(true);
+            SceneManager.LoadScene("Level04");
         }
     }
 

@@ -613,6 +613,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 450377866}
+  - component: {fileID: 450377867}
   m_Layer: 0
   m_Name: --- Scripts ---
   m_TagString: Untagged
@@ -635,6 +636,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &450377867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450377865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d69d297b9586a04a9123b51146fdcb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redSprite: {fileID: 2119284905}
+  orangeSprite: {fileID: 897467357}
+  greenSprite: {fileID: 2078104930}
+  redNormal: {fileID: 21300000, guid: 2237affcd1d0a34439c9df9432524901, type: 3}
+  redGlowing: {fileID: 21300000, guid: a8cae55ef34464c46ac8c116831d0630, type: 3}
+  orangeNormal: {fileID: 21300000, guid: 0b742c31c2b8bab4cb52c8781837501b, type: 3}
+  orangeGlowing: {fileID: 21300000, guid: 016b8928b34b4dd4a9f23ad914b02488, type: 3}
+  greenNormal: {fileID: 21300000, guid: 587bf35b859aae445af904ab935de6fa, type: 3}
+  greenGlowing: {fileID: 21300000, guid: 04a25446ae636384baab8e08c5b30271, type: 3}
 --- !u!1 &481311844
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,7 +843,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 7ec67bc4aa6b8ab4b85f1610af426448, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0b742c31c2b8bab4cb52c8781837501b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
