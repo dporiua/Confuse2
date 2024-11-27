@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 69597329}
   - component: {fileID: 69597328}
   - component: {fileID: 69597327}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1012,8 +1012,8 @@ Camera:
   m_GameObject: {fileID: 382564274}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.13962269, g: 0.13962269, b: 0.13962269, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2632,7 +2632,7 @@ GameObject:
   - component: {fileID: 801948318}
   - component: {fileID: 801948317}
   - component: {fileID: 801948316}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2871,7 +2871,7 @@ GameObject:
   - component: {fileID: 900406347}
   - component: {fileID: 900406346}
   - component: {fileID: 900406345}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3197,7 +3197,7 @@ GameObject:
   - component: {fileID: 937367918}
   - component: {fileID: 937367917}
   - component: {fileID: 937367916}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3567,6 +3567,7 @@ RectTransform:
   - {fileID: 1367368112}
   - {fileID: 61701634}
   - {fileID: 1005245653}
+  - {fileID: 1756645987}
   - {fileID: 1375036918}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4119,7 +4120,7 @@ GameObject:
   - component: {fileID: 1354248342}
   - component: {fileID: 1354248341}
   - component: {fileID: 1354248340}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4832,7 +4833,7 @@ GameObject:
   - component: {fileID: 1526427482}
   - component: {fileID: 1526427481}
   - component: {fileID: 1526427480}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4968,7 +4969,7 @@ GameObject:
   - component: {fileID: 1559778329}
   - component: {fileID: 1559778328}
   - component: {fileID: 1559778327}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5393,7 +5394,7 @@ GameObject:
   - component: {fileID: 1756645986}
   - component: {fileID: 1756645985}
   - component: {fileID: 1756645984}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5479,9 +5480,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756645983}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 347.31, y: 423.17, z: 97.56}
-  m_LocalScale: {x: 0.57, y: 2.13, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -517.16925, y: 506.76743, z: -95.82494}
+  m_LocalScale: {x: 61.559994, y: 230.04, z: 108}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1914989806}
@@ -5495,7 +5496,7 @@ Transform:
   - {fileID: 69597326}
   - {fileID: 900406344}
   - {fileID: 1901105760}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1100647087}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1901105759
 GameObject:
@@ -5509,7 +5510,7 @@ GameObject:
   - component: {fileID: 1901105763}
   - component: {fileID: 1901105762}
   - component: {fileID: 1901105761}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5614,7 +5615,7 @@ GameObject:
   - component: {fileID: 1914989805}
   - component: {fileID: 1914989804}
   - component: {fileID: 1914989803}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5962,7 +5963,7 @@ GameObject:
   - component: {fileID: 1954207881}
   - component: {fileID: 1954207880}
   - component: {fileID: 1954207879}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6602,7 +6603,7 @@ GameObject:
   - component: {fileID: 2145172182}
   - component: {fileID: 2145172181}
   - component: {fileID: 2145172180}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6707,4 +6708,3 @@ SceneRoots:
   - {fileID: 1065978015}
   - {fileID: 1108319319}
   - {fileID: 1532027295}
-  - {fileID: 1756645987}

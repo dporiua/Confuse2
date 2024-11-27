@@ -157,9 +157,10 @@ namespace Dana
 
         private Vector2 WorldToTextureCoordination(Vector3 worldPosition)
         {
+            worldPosition = transform.InverseTransformPoint(worldPosition);
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
             Bounds bounds = spriteRenderer.bounds;
-
+            var min = bounds.min;
             float xNormalized = (worldPosition.x - bounds.min.x) / bounds.size.x;
             float yNormalized = (worldPosition.y - bounds.min.y) / bounds.size.y;
 
@@ -173,7 +174,7 @@ namespace Dana
         {
             if (_currentLine != null)
             {
-                Destroy(_currentLine.gameObject);
+                //Destroy(_currentLine.gameObject);
             }
             _linePoints.Clear();
             _isDrawing = false;
