@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 147706740}
   - component: {fileID: 147706742}
   - component: {fileID: 147706743}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.08, y: 1.09}
+  m_Size: {x: 9.29, y: 6.22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -324,13 +324,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147706739}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000009313226, y: 0.699179, z: 0.000000029802322, w: 0.71494675}
-  m_LocalPosition: {x: 0.0152, y: 0, z: 0.0003}
-  m_LocalScale: {x: 0.0031238825, y: 0.0054383595, z: 0.0035159078}
+  m_LocalRotation: {x: -0.000000007450581, y: -0.8865598, z: -0.46261418, w: -0.000000037252903}
+  m_LocalPosition: {x: 1.8500003, y: 6.081594, z: -2.0840733}
+  m_LocalScale: {x: 0.6155751, y: 0.5257989, z: 0.48907965}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9142837098984252173}
-  m_LocalEulerAnglesHint: {x: 0, y: 88.722, z: 0}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 88.722, z: 90}
 --- !u!65 &147706742
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -350,8 +350,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.3, y: 6.75, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 9.230147, y: 6.173365, z: 0.20000002}
+  m_Center: {x: 0.032034416, y: -0.038458947, z: 0.0000023174505}
 --- !u!114 &147706743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,11 +365,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mazeTexture: {fileID: 2800000, guid: eaeda8f5769d9c0429740b35bed33475, type: 3}
-  mazeWallColour: {r: 0.5254902, g: 0.50980395, b: 0.454902, a: 1}
-  mazeGroundColour: {r: 0.9960785, g: 0.9921569, b: 0.95294124, a: 1}
+  mazeWallColour: {r: 0.12941177, g: 0.14901961, b: 0.41960788, a: 1}
+  mazeGroundColour: {r: 0.70980394, g: 0.90196085, b: 0.1137255, a: 1}
   lineRendererPrefab: {fileID: 300815095509245931, guid: 5c2861b477cc97345b8aa435619ae94e, type: 3}
   mainCamera: {fileID: 122119734}
   lineColourChanger: {fileID: 0}
+  mazeLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &216323453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1364,15 +1367,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 129.3
-  m_fontSizeBase: 129.3
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 2
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1423,6 +1426,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4673428313546132177, guid: 551802893108d1f4cbf7461e80313017, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 139.10472
+      objectReference: {fileID: 0}
+    - target: {fileID: 4673428313546132177, guid: 551802893108d1f4cbf7461e80313017, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 139.10472
+      objectReference: {fileID: 0}
+    - target: {fileID: 4673428313546132177, guid: 551802893108d1f4cbf7461e80313017, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 139.10472
+      objectReference: {fileID: 0}
+    - target: {fileID: 4673428313546132177, guid: 551802893108d1f4cbf7461e80313017, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.85
       objectReference: {fileID: 0}
@@ -1472,9 +1487,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4673428313546132177, guid: 551802893108d1f4cbf7461e80313017, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1618817747}
-    - targetCorrespondingSourceObject: {fileID: 4673428313546132177, guid: 551802893108d1f4cbf7461e80313017, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 147706741}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 551802893108d1f4cbf7461e80313017, type: 3}
 --- !u!4 &9142837098984252173 stripped
@@ -1496,3 +1508,4 @@ SceneRoots:
   - {fileID: 496298133}
   - {fileID: 89929057}
   - {fileID: 9142837098984252172}
+  - {fileID: 147706741}

@@ -8,7 +8,7 @@ namespace Dana
     /// It uses LineRenderer to render line points and delete them if
     /// they reach the mazeWallColour or the player releases the left mouse button.
     /// </summary>
- 
+
     public class LineDrawer : MonoBehaviour
     {
         #region Variables
@@ -24,6 +24,9 @@ namespace Dana
 
         [Header("Script references")]
         [SerializeField] private LineColourChanger lineColourChanger;
+
+        [Header("Raycast Settings")]
+        [SerializeField] private LayerMask mazeLayerMask;
 
         #endregion
 
@@ -73,28 +76,33 @@ namespace Dana
         /// </summary>
         private void AddPoint()
         {
-            Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            mousePosition.z = 0;
-
-            Vector2 textureCoord = WorldToTextureCoordination(mousePosition);
-
-            if (!IsPointOnMazeGround(textureCoord))
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, mazeLayerMask))
             {
-                ClearCurrentLine();
-                return;
-            }
-
-            if (_linePoints.Count == 0 || Vector3.Distance(mousePosition, _linePoints[_linePoints.Count - 1]) > 0.1f)
-            {
-                if (CheckIntermediateCollisions(mousePosition))
+                if (hit.collider != null && hit.collider.gameObject == gameObject)
                 {
-                    ClearCurrentLine();
-                    return;
-                }
+                    Vector3 worldPosition = hit.point;
+                    Vector2 textureCoord = WorldToTextureCoordination(worldPosition);
 
-                _linePoints.Add(mousePosition);
-                _currentLine.positionCount = _linePoints.Count;
-                _currentLine.SetPositions(_linePoints.ToArray());
+                    if (!IsPointOnMazeGround(textureCoord))
+                    {
+                        ClearCurrentLine();
+                        return;
+                    }
+
+                    if (_linePoints.Count == 0 || Vector3.Distance(worldPosition, _linePoints[_linePoints.Count - 1]) > 0.1f)
+                    {
+                        if (CheckIntermediateCollisions(worldPosition))
+                        {
+                            ClearCurrentLine();
+                            return;
+                        }
+
+                        _linePoints.Add(worldPosition);
+                        _currentLine.positionCount = _linePoints.Count;
+                        _currentLine.SetPositions(_linePoints.ToArray());
+                    }
+                }
             }
         }
 
@@ -149,12 +157,14 @@ namespace Dana
 
         private Vector2 WorldToTextureCoordination(Vector3 worldPosition)
         {
-            Vector3 spritePosition = transform.position;
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
             Bounds bounds = spriteRenderer.bounds;
 
             float xNormalized = (worldPosition.x - bounds.min.x) / bounds.size.x;
             float yNormalized = (worldPosition.y - bounds.min.y) / bounds.size.y;
+
+            xNormalized = Mathf.Clamp01(xNormalized);
+            yNormalized = Mathf.Clamp01(yNormalized);
 
             return new Vector2(xNormalized * mazeTexture.width, yNormalized * mazeTexture.height);
         }
