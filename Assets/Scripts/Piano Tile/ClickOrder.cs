@@ -26,7 +26,7 @@ public class ClickOrder : MonoBehaviour
         if (tilesList.Count == 0)
         {
             Debug.Log("Wrong, start again");
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
         if (tilesList.Count == 4)
         {
@@ -36,7 +36,7 @@ public class ClickOrder : MonoBehaviour
          else
          {
              Debug.Log("Wrong, start again");
-             SceneManager.LoadScene(2);
+             SceneManager.LoadScene(1);
          }
     }
     
@@ -50,7 +50,7 @@ public class ClickOrder : MonoBehaviour
         else
         {
             Debug.Log("Wrong, start again");
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
     }
     
@@ -66,7 +66,7 @@ public class ClickOrder : MonoBehaviour
         else
         {
             Debug.Log("Wrong! start again");
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
       
     }
@@ -83,7 +83,7 @@ public class ClickOrder : MonoBehaviour
         else
         {
             Debug.Log("Wrong! start again");
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
     }
     
@@ -99,7 +99,7 @@ public class ClickOrder : MonoBehaviour
         else
         {
             Debug.Log("Wrong! start again");
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
     }
     
@@ -115,7 +115,7 @@ public class ClickOrder : MonoBehaviour
         else
         {
             Debug.Log("Wrong! start again");
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
     }
     
@@ -131,7 +131,7 @@ public class ClickOrder : MonoBehaviour
         else
         {
             Debug.Log("Wrong! start again");
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
     }
 }

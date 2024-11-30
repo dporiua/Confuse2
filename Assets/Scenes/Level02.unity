@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 69597329}
   - component: {fileID: 69597328}
   - component: {fileID: 69597327}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,11 +454,11 @@ Transform:
   m_GameObject: {fileID: 69597325}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.98246, y: -4.3239536, z: 0}
+  m_LocalPosition: {x: 9.982461, y: -3.690005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1756645987}
+  m_Father: {fileID: 1465733157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &69597327
 BoxCollider:
@@ -563,6 +563,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1965618756}
+  - {fileID: 1954207882}
   m_Father: {fileID: 61701634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1012,8 +1013,8 @@ Camera:
   m_GameObject: {fileID: 382564274}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.13962269, g: 0.13962269, b: 0.13962269, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1381,7 +1382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8745099, g: 0.19215688, b: 0.20784315, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2632,7 +2633,7 @@ GameObject:
   - component: {fileID: 801948318}
   - component: {fileID: 801948317}
   - component: {fileID: 801948316}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2648,11 +2649,11 @@ Transform:
   m_GameObject: {fileID: 801948314}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.4912496, y: -4.3239536, z: 0}
+  m_LocalPosition: {x: 6.491249, y: -3.690005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1756645987}
+  m_Father: {fileID: 1465733157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &801948316
 BoxCollider:
@@ -2871,7 +2872,7 @@ GameObject:
   - component: {fileID: 900406347}
   - component: {fileID: 900406346}
   - component: {fileID: 900406345}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2887,11 +2888,11 @@ Transform:
   m_GameObject: {fileID: 900406343}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.263153, y: -4.3239536, z: 0}
+  m_LocalPosition: {x: 13.263153, y: -3.690005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1756645987}
+  m_Father: {fileID: 1465733157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &900406345
 BoxCollider:
@@ -3107,6 +3108,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 517520801}
+  - {fileID: 1559778330}
   m_Father: {fileID: 61701634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3197,7 +3199,7 @@ GameObject:
   - component: {fileID: 937367918}
   - component: {fileID: 937367917}
   - component: {fileID: 937367916}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3213,11 +3215,11 @@ Transform:
   m_GameObject: {fileID: 937367914}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.3239536, z: 0}
+  m_LocalPosition: {x: 0, y: -3.6900053, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1756645987}
+  m_Father: {fileID: 1465733157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &937367916
 BoxCollider:
@@ -3391,6 +3393,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 599836004}
+  - {fileID: 2145172183}
   m_Father: {fileID: 61701634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3565,6 +3568,7 @@ RectTransform:
   m_Children:
   - {fileID: 1590084819}
   - {fileID: 1367368112}
+  - {fileID: 1465733157}
   - {fileID: 61701634}
   - {fileID: 1005245653}
   - {fileID: 1375036918}
@@ -3652,6 +3656,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 68622003}
+  - {fileID: 1914989806}
   m_Father: {fileID: 61701634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4119,8 +4124,8 @@ GameObject:
   - component: {fileID: 1354248342}
   - component: {fileID: 1354248341}
   - component: {fileID: 1354248340}
-  m_Layer: 0
-  m_Name: Black tile (4)
+  m_Layer: 5
+  m_Name: Black tile B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4206,11 +4211,11 @@ Transform:
   m_GameObject: {fileID: 1354248339}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.263153, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.49180916, y: -0.20799093, z: -0.82671857}
+  m_LocalScale: {x: 0.3294797, y: 0.6086129, z: 0.9317574}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1756645987}
+  m_Father: {fileID: 1524077442}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1367368111
 GameObject:
@@ -4710,6 +4715,43 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422049411}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1465733156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1465733157}
+  m_Layer: 5
+  m_Name: BlackTiles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1465733157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465733156}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -517.16925, y: 506.76743, z: -95.82494}
+  m_LocalScale: {x: 61.559994, y: 230.04, z: 108}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1526427479}
+  - {fileID: 801948315}
+  - {fileID: 69597326}
+  - {fileID: 937367915}
+  - {fileID: 900406344}
+  - {fileID: 1901105760}
+  m_Father: {fileID: 1100647087}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1524077441
 GameObject:
   m_ObjectHideFlags: 0
@@ -4742,6 +4784,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 29969370}
+  - {fileID: 1354248343}
   m_Father: {fileID: 61701634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4832,7 +4875,7 @@ GameObject:
   - component: {fileID: 1526427482}
   - component: {fileID: 1526427481}
   - component: {fileID: 1526427480}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4848,11 +4891,11 @@ Transform:
   m_GameObject: {fileID: 1526427478}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.280693, y: -4.3239536, z: 0}
+  m_LocalPosition: {x: 3.280693, y: -3.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1756645987}
+  m_Father: {fileID: 1465733157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1526427480
 BoxCollider:
@@ -4968,8 +5011,8 @@ GameObject:
   - component: {fileID: 1559778329}
   - component: {fileID: 1559778328}
   - component: {fileID: 1559778327}
-  m_Layer: 0
-  m_Name: Black tile (5)
+  m_Layer: 5
+  m_Name: Black tile A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5055,11 +5098,11 @@ Transform:
   m_GameObject: {fileID: 1559778326}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.771925, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.44556656, y: -0.20799093, z: -0.82671857}
+  m_LocalScale: {x: 0.3294797, y: 0.6086129, z: 0.9317574}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1756645987}
+  m_Father: {fileID: 935456910}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1590084818
 GameObject:
@@ -5393,8 +5436,8 @@ GameObject:
   - component: {fileID: 1756645986}
   - component: {fileID: 1756645985}
   - component: {fileID: 1756645984}
-  m_Layer: 0
-  m_Name: Black tiles
+  m_Layer: 5
+  m_Name: Black tiles F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5479,23 +5522,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756645983}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 347.31, y: 423.17, z: 97.56}
-  m_LocalScale: {x: 0.57, y: 2.13, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.56696075, y: -0.20799093, z: -0.82671857}
+  m_LocalScale: {x: 0.3294797, y: 0.6086129, z: 0.9317574}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1914989806}
-  - {fileID: 1354248343}
-  - {fileID: 1559778330}
-  - {fileID: 2145172183}
-  - {fileID: 1954207882}
-  - {fileID: 937367915}
-  - {fileID: 1526427479}
-  - {fileID: 801948315}
-  - {fileID: 69597326}
-  - {fileID: 900406344}
-  - {fileID: 1901105760}
-  m_Father: {fileID: 0}
+  m_Children: []
+  m_Father: {fileID: 1946524339}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1901105759
 GameObject:
@@ -5509,7 +5541,7 @@ GameObject:
   - component: {fileID: 1901105763}
   - component: {fileID: 1901105762}
   - component: {fileID: 1901105761}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Black tile (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5525,11 +5557,11 @@ Transform:
   m_GameObject: {fileID: 1901105759}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.771925, y: -4.3239536, z: 0}
+  m_LocalPosition: {x: 16.771925, y: -3.690005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1756645987}
+  m_Father: {fileID: 1465733157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1901105761
 BoxCollider:
@@ -5614,8 +5646,8 @@ GameObject:
   - component: {fileID: 1914989805}
   - component: {fileID: 1914989804}
   - component: {fileID: 1914989803}
-  m_Layer: 0
-  m_Name: Black tile (3)
+  m_Layer: 5
+  m_Name: Black tile C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5701,11 +5733,11 @@ Transform:
   m_GameObject: {fileID: 1914989802}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.98246, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.49181503, y: -0.20798384, z: -0.82671857}
+  m_LocalScale: {x: 0.3294797, y: 0.6086129, z: 0.9317574}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1756645987}
+  m_Father: {fileID: 1145580199}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1946524338
 GameObject:
@@ -5739,6 +5771,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1953863390}
+  - {fileID: 1756645987}
   m_Father: {fileID: 61701634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5962,8 +5995,8 @@ GameObject:
   - component: {fileID: 1954207881}
   - component: {fileID: 1954207880}
   - component: {fileID: 1954207879}
-  m_Layer: 0
-  m_Name: Black tile (2)
+  m_Layer: 5
+  m_Name: Black tile D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6049,11 +6082,11 @@ Transform:
   m_GameObject: {fileID: 1954207878}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.4912496, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.56695396, y: -0.20799093, z: -0.82671857}
+  m_LocalScale: {x: 0.3294797, y: 0.6086129, z: 0.9317574}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1756645987}
+  m_Father: {fileID: 77752059}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1965618755
 GameObject:
@@ -6602,8 +6635,8 @@ GameObject:
   - component: {fileID: 2145172182}
   - component: {fileID: 2145172181}
   - component: {fileID: 2145172180}
-  m_Layer: 0
-  m_Name: Black tile (1)
+  m_Layer: 5
+  m_Name: Black tile E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6689,11 +6722,11 @@ Transform:
   m_GameObject: {fileID: 2145172179}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.280693, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.54962265, y: -0.20799093, z: -0.82671857}
+  m_LocalScale: {x: 0.3294797, y: 0.6086129, z: 0.9317574}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1756645987}
+  m_Father: {fileID: 1067287353}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -6707,4 +6740,3 @@ SceneRoots:
   - {fileID: 1065978015}
   - {fileID: 1108319319}
   - {fileID: 1532027295}
-  - {fileID: 1756645987}
