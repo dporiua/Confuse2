@@ -46,7 +46,7 @@ public class TrafficLightLogic : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !_isPaused)
         {
             Debug.Log("Stopped on: " + _currentGlowingSprite);
 
@@ -78,6 +78,7 @@ public class TrafficLightLogic : MonoBehaviour
         sprite.sprite = glowing;
 
         _currentGlowingSprite = spriteName;
+
     }
 
     #region IEnumerators
