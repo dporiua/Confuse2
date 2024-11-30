@@ -4,29 +4,28 @@ using UnityEngine;
 namespace Dana
 {
     /// <summary>
-    /// This script is meant to draw a line if the texture pixel is not black.
-    /// It uses LineRenderer to render line points and delete them if
-    /// they reach the mazeWallColour or the player releases the left mouse button.
+    /// This script is meant to draw a line based on colliders.
+    /// It uses LineRenderer to render line points and deletes the line
+    /// if it collides with a maze wall or the player releases the left mouse button.
     /// </summary>
 
     public class LineDrawer : MonoBehaviour
     {
         #region Variables
-        [SerializeField] private Texture2D mazeTexture;
-        [SerializeField] private Color mazeWallColour;
-        [SerializeField] private Color mazeGroundColour;
+        [Tooltip("Assign any object which contains a line renderer component into this slot.")]
         [SerializeField] private GameObject lineRendererPrefab;
+        [Tooltip("Assign the camera that is used to render the maze view here.")]
         [SerializeField] private Camera mainCamera;
+
+        [Header("Layer Masks")]
+        [Tooltip("Assign a layer related to maze ground into this slot, this will help the script with identifying places where the line can be drawn.")]
+        [SerializeField] private LayerMask groundLayerMask;
+        [Tooltip("Assign a layer related to maze wall into this slot, this will help the script identify places where the pen can't go beyond.")]
+        [SerializeField] private LayerMask wallLayerMask;
 
         private LineRenderer _currentLine;
         private List<Vector3> _linePoints = new List<Vector3>();
         private bool _isDrawing = false;
-
-        [Header("Script references")]
-        [SerializeField] private LineColourChanger lineColourChanger;
-
-        [Header("Raycast Settings")]
-        [SerializeField] private LayerMask mazeLayerMask;
 
         #endregion
 
@@ -36,6 +35,9 @@ namespace Dana
         }
 
         #region Private Functions
+        /// <summary>
+        /// Handles user input for starting, continuing, and ending line drawing.
+        /// </summary>
         private void HandleDrawingInput()
         {
             if (Input.GetMouseButtonDown(0))
@@ -55,44 +57,37 @@ namespace Dana
         }
 
         /// <summary>
-        /// Tells the game that the player started drawing. Instantiates line prefab 
-        /// several times to form a line.
+        /// Starts a new line when the player begins drawing.
         /// </summary>
         private void StartDrawing()
         {
             _isDrawing = true;
 
-            GameObject line = Instantiate(lineRendererPrefab, Vector3.zero, Quaternion.identity);
+            GameObject line = Instantiate(lineRendererPrefab, transform.position, transform.rotation);
             _currentLine = line.GetComponent<LineRenderer>();
             _linePoints.Clear();
 
             _currentLine.sortingLayerName = "MazePaper";
             _currentLine.sortingOrder = 10;
+
+            _currentLine.transform.SetParent(transform, true);
         }
 
         /// <summary>
-        /// Adds line points epending on where the mouse position and saves their positions. 
-        /// Positions get cleared when line hits a wall.
+        /// Adds points to the line while the player is drawing.
         /// </summary>
         private void AddPoint()
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, mazeLayerMask))
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
             {
-                if (hit.collider != null && hit.collider.gameObject == gameObject)
+                if (IsGround(hit.collider))
                 {
                     Vector3 worldPosition = hit.point;
-                    Vector2 textureCoord = WorldToTextureCoordination(worldPosition);
-
-                    if (!IsPointOnMazeGround(textureCoord))
-                    {
-                        ClearCurrentLine();
-                        return;
-                    }
 
                     if (_linePoints.Count == 0 || Vector3.Distance(worldPosition, _linePoints[_linePoints.Count - 1]) > 0.1f)
                     {
-                        if (CheckIntermediateCollisions(worldPosition))
+                        if (CheckWallCollision(worldPosition))
                         {
                             ClearCurrentLine();
                             return;
@@ -103,72 +98,16 @@ namespace Dana
                         _currentLine.SetPositions(_linePoints.ToArray());
                     }
                 }
-            }
-        }
-
-        private bool CheckIntermediateCollisions(Vector3 newPoint)
-        {
-            if (_linePoints.Count == 0) return false;
-
-            Vector3 lastPoint = _linePoints[_linePoints.Count - 1];
-            int steps = 10;
-            for (int i = 1; i <= steps; i++)
-            {
-                Vector3 intermediatePoint = Vector3.Lerp(lastPoint, newPoint, i / (float)steps);
-                Vector2 textureCoord = WorldToTextureCoordination(intermediatePoint);
-
-                if (!IsPointOnMazeGround(textureCoord) || IsLineCollidingWithMazeWall(intermediatePoint))
+                else if (IsWall(hit.collider))
                 {
-                    return true;
+                    ClearCurrentLine();
                 }
             }
-
-            return false;
         }
 
-        private bool IsPointOnMazeGround(Vector2 textureCoord)
-        {
-            if (textureCoord.x >= 0 && textureCoord.y >= 0 && textureCoord.x < mazeTexture.width && textureCoord.y < mazeTexture.height)
-            {
-                Color pixelColour = mazeTexture.GetPixel((int)textureCoord.x, (int)textureCoord.y);
-                return ColorsMatch(pixelColour, mazeGroundColour);
-            }
-            return false;
-        }
-
-
-        private bool IsLineCollidingWithMazeWall(Vector3 position)
-        {
-            Vector2 pixelPosition = WorldToTextureCoordination(position);
-            if (pixelPosition.x >= 0 && pixelPosition.y >= 0 && pixelPosition.x < mazeTexture.width && pixelPosition.y < mazeTexture.height)
-            {
-                Color pixelColour = mazeTexture.GetPixel((int)pixelPosition.x, (int)pixelPosition.y);
-                return ColorsMatch(pixelColour, mazeWallColour);
-            }
-            return false;
-        }
-
-        private bool ColorsMatch(Color a, Color b, float tolerance = 0.01f)
-        {
-            return Mathf.Abs(a.r - b.r) < tolerance &&
-                   Mathf.Abs(a.g - b.g) < tolerance &&
-                   Mathf.Abs(a.b - b.b) < tolerance;
-        }
-
-        private Vector2 WorldToTextureCoordination(Vector3 worldPosition)
-        {
-            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-            Bounds bounds = spriteRenderer.bounds;
-
-            float xNormalized = (worldPosition.x - bounds.min.x) / bounds.size.x;
-            float yNormalized = (worldPosition.y - bounds.min.y) / bounds.size.y;
-
-            xNormalized = Mathf.Clamp01(xNormalized);
-            yNormalized = Mathf.Clamp01(yNormalized);
-
-            return new Vector2(xNormalized * mazeTexture.width, yNormalized * mazeTexture.height);
-        }
-
+        /// <summary>
+        /// Clears current line when leaving mouse button or hitting a wall.
+        /// </summary>
         private void ClearCurrentLine()
         {
             if (_currentLine != null)
@@ -178,6 +117,33 @@ namespace Dana
             _linePoints.Clear();
             _isDrawing = false;
         }
+
+        #region Bools.
+        /// <summary>
+        /// Checks if drawing's postion overlaps with any wall colliders.
+        /// </summary>
+        private bool CheckWallCollision(Vector3 position)
+        {
+            Collider[] colliders = Physics.OverlapSphere(position, 0.05f, wallLayerMask);
+            return colliders.Length > 0;
+        }
+
+        /// <summary>
+        /// Checks if a collider belongs to the ground layer.
+        /// </summary>
+        private bool IsGround(Collider collider)
+        {
+            return collider.gameObject.layer == LayerMask.NameToLayer("MazeGround");
+        }
+
+        /// <summary>
+        /// Checks if a collider belongs to the wall layer.
+        /// </summary>
+        private bool IsWall(Collider collider)
+        {
+            return collider.gameObject.layer == LayerMask.NameToLayer("MazeWall");
+        }
+        #endregion
         #endregion
     }
 }
