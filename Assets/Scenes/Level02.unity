@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.017, y: 0.000017166138}
+  m_AnchoredPosition: {x: 0.032, y: 0.000017166138}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &29969371
@@ -182,11 +182,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.87843144, g: 0.18823531, b: 0.20784315, a: 0}
-    m_HighlightedColor: {r: 0.882353, g: 0.20784315, b: 0.21960786, a: 1}
-    m_PressedColor: {r: 0.5, g: 0.048241597, b: 0, a: 1}
-    m_SelectedColor: {r: 0.46226418, g: 0, b: 0.008062696, a: 1}
-    m_DisabledColor: {r: 0.4339623, g: 0, b: 0.0052284836, a: 0.8156863}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8745099, g: 0.19215688, b: 0.20784315, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -329,7 +329,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.02, y: 0.000017166138}
+  m_AnchoredPosition: {x: 0.028, y: 0.000017166138}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &68622004
@@ -353,11 +353,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.87843144, g: 0.18823531, b: 0.20784315, a: 0}
-    m_HighlightedColor: {r: 0.882353, g: 0.20784315, b: 0.21960786, a: 1}
-    m_PressedColor: {r: 0.5, g: 0.048241597, b: 0, a: 1}
-    m_SelectedColor: {r: 0.46226418, g: 0, b: 0.008062696, a: 1}
-    m_DisabledColor: {r: 0.4339623, g: 0, b: 0.0052284836, a: 0.8156863}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8745099, g: 0.19215688, b: 0.20784315, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -437,7 +437,6 @@ GameObject:
   - component: {fileID: 69597326}
   - component: {fileID: 69597329}
   - component: {fileID: 69597328}
-  - component: {fileID: 69597327}
   m_Layer: 5
   m_Name: Black tile (7)
   m_TagString: Untagged
@@ -454,33 +453,12 @@ Transform:
   m_GameObject: {fileID: 69597325}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.982461, y: -3.690005, z: 0}
+  m_LocalPosition: {x: 9.982461, y: -3.6679983, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1465733157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &69597327
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69597325}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &69597328
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1302,7 +1280,7 @@ RectTransform:
   m_GameObject: {fileID: 517520800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1.379998}
-  m_LocalScale: {x: 1.73, y: 0.035450555, z: 0.028700253}
+  m_LocalScale: {x: 1.73, y: 0.037245236, z: 0.028700253}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 716758876}
@@ -1310,7 +1288,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000011205673, y: 0.000013053417}
+  m_AnchoredPosition: {x: 0, y: -0.0019999743}
   m_SizeDelta: {x: -0.42198, y: 27.209}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &517520802
@@ -1334,11 +1312,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.87843144, g: 0.18823531, b: 0.20784315, a: 0}
-    m_HighlightedColor: {r: 0.882353, g: 0.20784315, b: 0.21960786, a: 1}
-    m_PressedColor: {r: 0.5, g: 0.048241597, b: 0, a: 1}
-    m_SelectedColor: {r: 0.46226418, g: 0, b: 0.008062696, a: 1}
-    m_DisabledColor: {r: 0.4339623, g: 0, b: 0.0052284836, a: 0.8156863}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1735,11 +1713,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.87843144, g: 0.18823531, b: 0.20784315, a: 0}
-    m_HighlightedColor: {r: 0.882353, g: 0.20784315, b: 0.21960786, a: 1}
-    m_PressedColor: {r: 0.5, g: 0.048241597, b: 0, a: 1}
-    m_SelectedColor: {r: 0.46226418, g: 0, b: 0.008062696, a: 1}
-    m_DisabledColor: {r: 0.4339623, g: 0, b: 0.0052284836, a: 0.8156863}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1783,7 +1761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8745099, g: 0.19215688, b: 0.20784315, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2632,7 +2610,6 @@ GameObject:
   - component: {fileID: 801948315}
   - component: {fileID: 801948318}
   - component: {fileID: 801948317}
-  - component: {fileID: 801948316}
   m_Layer: 5
   m_Name: Black tile (11)
   m_TagString: Untagged
@@ -2649,33 +2626,12 @@ Transform:
   m_GameObject: {fileID: 801948314}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.491249, y: -3.690005, z: 0}
+  m_LocalPosition: {x: 6.491249, y: -3.6679983, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1465733157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &801948316
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801948314}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &801948317
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2871,7 +2827,6 @@ GameObject:
   - component: {fileID: 900406344}
   - component: {fileID: 900406347}
   - component: {fileID: 900406346}
-  - component: {fileID: 900406345}
   m_Layer: 5
   m_Name: Black tile (8)
   m_TagString: Untagged
@@ -2888,33 +2843,12 @@ Transform:
   m_GameObject: {fileID: 900406343}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.263153, y: -3.690005, z: 0}
+  m_LocalPosition: {x: 13.263153, y: -3.668, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1465733157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &900406345
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900406343}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &900406346
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3198,7 +3132,6 @@ GameObject:
   - component: {fileID: 937367915}
   - component: {fileID: 937367918}
   - component: {fileID: 937367917}
-  - component: {fileID: 937367916}
   m_Layer: 5
   m_Name: Black tile (6)
   m_TagString: Untagged
@@ -3215,33 +3148,12 @@ Transform:
   m_GameObject: {fileID: 937367914}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.6900053, z: 0}
+  m_LocalPosition: {x: 0, y: -3.6679986, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1465733157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &937367916
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 937367914}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &937367917
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3609,6 +3521,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilesList: 
+  correctColor: {r: 1, g: 1, b: 1, a: 0}
+  flashColor1: {r: 1, g: 0, b: 0, a: 0}
+  flashColor2: {r: 0.4528302, g: 0, b: 0, a: 0}
+  flashDuration: 0.2
+  buttons:
+  - {fileID: 517520802}
+  - {fileID: 29969371}
+  - {fileID: 68622004}
+  - {fileID: 1965618757}
+  - {fileID: 599836005}
+  - {fileID: 1953863391}
+  - {fileID: 1687834776}
 --- !u!4 &1108319319
 Transform:
   m_ObjectHideFlags: 0
@@ -4211,7 +4135,7 @@ Transform:
   m_GameObject: {fileID: 1354248339}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.49180916, y: -0.20799093, z: -0.82671857}
+  m_LocalPosition: {x: -0.49180916, y: -0.22899929, z: -1}
   m_LocalScale: {x: 0.3294797, y: 0.6086129, z: 0.9317574}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4874,7 +4798,6 @@ GameObject:
   - component: {fileID: 1526427479}
   - component: {fileID: 1526427482}
   - component: {fileID: 1526427481}
-  - component: {fileID: 1526427480}
   m_Layer: 5
   m_Name: Black tile (10)
   m_TagString: Untagged
@@ -4891,33 +4814,12 @@ Transform:
   m_GameObject: {fileID: 1526427478}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.280693, y: -3.69, z: 0}
+  m_LocalPosition: {x: 3.280693, y: -3.6679933, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1465733157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1526427480
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1526427478}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1526427481
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5098,7 +5000,7 @@ Transform:
   m_GameObject: {fileID: 1559778326}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.44556656, y: -0.20799093, z: -0.82671857}
+  m_LocalPosition: {x: -0.44556656, y: -0.229, z: -1}
   m_LocalScale: {x: 0.3294797, y: 0.6086129, z: 0.9317574}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5327,7 +5229,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.06, y: 0.000017166138}
+  m_AnchoredPosition: {x: 0.024, y: 0.000017166138}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1687834776
@@ -5351,11 +5253,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.87843144, g: 0.18823531, b: 0.20784315, a: 0}
-    m_HighlightedColor: {r: 0.882353, g: 0.20784315, b: 0.21960786, a: 1}
-    m_PressedColor: {r: 0.5, g: 0.048241597, b: 0, a: 1}
-    m_SelectedColor: {r: 0.46226418, g: 0, b: 0.008062696, a: 1}
-    m_DisabledColor: {r: 0.4339623, g: 0, b: 0.0052284836, a: 0.8156863}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -5399,7 +5301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8745099, g: 0.19215688, b: 0.20784315, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5523,7 +5425,7 @@ Transform:
   m_GameObject: {fileID: 1756645983}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.56696075, y: -0.20799093, z: -0.82671857}
+  m_LocalPosition: {x: -0.56696075, y: -0.22899929, z: -1}
   m_LocalScale: {x: 0.3294797, y: 0.6086129, z: 0.9317574}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5540,7 +5442,6 @@ GameObject:
   - component: {fileID: 1901105760}
   - component: {fileID: 1901105763}
   - component: {fileID: 1901105762}
-  - component: {fileID: 1901105761}
   m_Layer: 5
   m_Name: Black tile (9)
   m_TagString: Untagged
@@ -5563,27 +5464,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1465733157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1901105761
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1901105759}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1901105762
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5733,7 +5613,7 @@ Transform:
   m_GameObject: {fileID: 1914989802}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.49181503, y: -0.20798384, z: -0.82671857}
+  m_LocalPosition: {x: -0.49181503, y: -0.2289922, z: -1}
   m_LocalScale: {x: 0.3294797, y: 0.6086129, z: 0.9317574}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5886,7 +5766,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.03, y: 0.000017166138}
+  m_AnchoredPosition: {x: 0, y: 0.000017166138}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1953863391
@@ -5910,11 +5790,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.87843144, g: 0.18823531, b: 0.20784315, a: 0}
-    m_HighlightedColor: {r: 0.882353, g: 0.20784315, b: 0.21960786, a: 1}
-    m_PressedColor: {r: 0.5, g: 0.048241597, b: 0, a: 1}
-    m_SelectedColor: {r: 0.46226418, g: 0, b: 0.008062696, a: 1}
-    m_DisabledColor: {r: 0.4339623, g: 0, b: 0.0052284836, a: 0.8156863}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -5958,7 +5838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8745099, g: 0.19215688, b: 0.20784315, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6082,7 +5962,7 @@ Transform:
   m_GameObject: {fileID: 1954207878}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.56695396, y: -0.20799093, z: -0.82671857}
+  m_LocalPosition: {x: -0.56695396, y: -0.22899929, z: -1}
   m_LocalScale: {x: 0.3294797, y: 0.6086129, z: 0.9317574}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6124,7 +6004,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.000017166138}
+  m_AnchoredPosition: {x: 0.015, y: 0.000017166138}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1965618757
@@ -6148,11 +6028,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.87843144, g: 0.18823531, b: 0.20784315, a: 0}
-    m_HighlightedColor: {r: 0.882353, g: 0.20784315, b: 0.21960786, a: 1}
-    m_PressedColor: {r: 0.5, g: 0.048241597, b: 0, a: 1}
-    m_SelectedColor: {r: 0.46226418, g: 0, b: 0.008062696, a: 1}
-    m_DisabledColor: {r: 0.4339623, g: 0, b: 0.0052284836, a: 0.8156863}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -6196,7 +6076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8745099, g: 0.19215688, b: 0.20784315, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6722,7 +6602,7 @@ Transform:
   m_GameObject: {fileID: 2145172179}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.54962265, y: -0.20799093, z: -0.82671857}
+  m_LocalPosition: {x: -0.54962265, y: -0.22899929, z: -1}
   m_LocalScale: {x: 0.3294797, y: 0.6086129, z: 0.9317574}
   m_ConstrainProportionsScale: 0
   m_Children: []
