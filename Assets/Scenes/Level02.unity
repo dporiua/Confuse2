@@ -3521,9 +3521,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilesList: 
-  correctColor: {r: 1, g: 1, b: 1, a: 0}
-  flashColor1: {r: 1, g: 0, b: 0, a: 0}
-  flashColor2: {r: 0.4528302, g: 0, b: 0, a: 0}
+  correctKeyMaterial: {fileID: 0}
+  incorrectFlashMaterialOne: {fileID: 0}
+  incorrectFlashMaterialTwo: {fileID: 0}
   flashDuration: 0.2
   buttons:
   - {fileID: 517520802}
