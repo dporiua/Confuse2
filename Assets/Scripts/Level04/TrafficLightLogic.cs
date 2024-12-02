@@ -1,13 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TrafficLightLogic : MonoBehaviour
 {
     #region Variables.
-    [Header("Sprite renderers.")]
+    [Header("Sprite Renderers")]
     [Tooltip("Drag the Red traffic sprite object in scene into this space.")]
     public SpriteRenderer redSprite;
     [Tooltip("Drag the Orange traffic sprite object in scene into this space.")]
@@ -26,17 +24,19 @@ public class TrafficLightLogic : MonoBehaviour
     public Sprite orangeGlowing;
     [Tooltip("Place the regular state of the Green traffic light here")]
     public Sprite greenNormal;
-    [Tooltip("Place the glowing state of the Red traffic light here")]
+    [Tooltip("Place the glowing state of the Green traffic light here")]
     public Sprite greenGlowing;
 
     /// <summary>
     /// These variables are used to track displayed sprites 
     /// </summary>
     private string _currentGlowingSprite = "";
-    private string _lastStoppedSprite = "";
     private float _firstStopTime = 0f;
     private bool _isPaused = false;
     private Coroutine _spriteFlashCoroutine = null;
+
+    private enum GameState { WaitingForRed, WaitingForGreen }
+    private GameState _currentState = GameState.WaitingForRed;
     #endregion
 
     private void Start()
@@ -50,25 +50,51 @@ public class TrafficLightLogic : MonoBehaviour
         {
             Debug.Log("Stopped on: " + _currentGlowingSprite);
 
-            if (_currentGlowingSprite == "Red")
+            switch (_currentState)
             {
-                _lastStoppedSprite = "Red";
-                _firstStopTime = Time.time;
-            }
-            else if (_currentGlowingSprite == "Green" && _lastStoppedSprite == "Red")
-            {
-                if (Time.time - _firstStopTime >= 6f)
-                {
-                    SceneManager.LoadScene("Level05");
-                }
+                case GameState.WaitingForRed:
+                    if (_currentGlowingSprite == "Red")
+                    {
+                        _currentState = GameState.WaitingForGreen;
+                        _firstStopTime = Time.time;
+                        StartCoroutine(PauseAndFlash(4f));
+                    }
+                    else
+                    {
+                        ResetProgress();
+                    }
+                    break;
+
+                case GameState.WaitingForGreen:
+                    if (_currentGlowingSprite == "Green")
+                    {
+                        float timeSinceRed = Time.time - _firstStopTime;
+                        if (timeSinceRed >= 6f)
+                        {
+                            SceneManager.LoadScene("Level05");
+                        }
+                        else
+                        {
+                            ResetProgress();
+                        }
+                    }
+                    else
+                    {
+                        ResetProgress();
+                    }
+                    break;
             }
 
-            StartCoroutine(PauseAndFlash(4f));
         }
     }
 
     #region Private Functions.
-    
+    private void ResetProgress()
+    {
+        _currentState = GameState.WaitingForRed;
+        _firstStopTime = 0f;
+    }
+
     private void SetGlow(SpriteRenderer sprite, Sprite normal, Sprite glowing, string spriteName)
     {
         redSprite.sprite = redNormal;
