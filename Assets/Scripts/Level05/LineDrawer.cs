@@ -7,9 +7,9 @@ namespace Dana
     /// <summary>
     /// This script is meant to draw a line based on colliders.
     /// It uses LineRenderer to render line points and deletes the line
-    /// Changes material colour after a short delay as well.
+    /// Changes material colour after a short delay as well. 
     /// </summary>
-   
+
     public class LineDrawer : MonoBehaviour
     {
         #region Variables
@@ -28,12 +28,12 @@ namespace Dana
         [Tooltip("Delay time before the line is cleared.")]
         [SerializeField] private float clearDelay = 0.6f;
         [Tooltip("Assign a colour from the colour wheel to represent line error colour")]
-        [SerializeField] private Color incorrectLineCOlour = Color.red;
+        [SerializeField] private Color incorrectLineColour = Color.red;
 
+        private List<LineRenderer> activeLines = new List<LineRenderer>();
         private LineRenderer _currentLine;
         private List<Vector3> _linePoints = new List<Vector3>();
         private bool _isDrawing = false;
-        private bool _isClearing = false; 
 
         #endregion
 
@@ -41,6 +41,24 @@ namespace Dana
         {
             HandleDrawingInput();
         }
+
+
+        #region Public Functions
+        /// <summary>
+        /// Destroys all active lines, ensuring no lines stay in the scene.
+        /// </summary>
+        public void ClearAllLines()
+        {
+            foreach (var line in activeLines)
+            {
+                if (line != null)
+                {
+                    Destroy(line.gameObject);
+                }
+            }
+            activeLines.Clear();
+        }
+        #endregion
 
         #region Private Functions
         /// <summary>
@@ -53,7 +71,7 @@ namespace Dana
 
             if (Input.GetMouseButtonDown(0) && isGroundHit)
             {
-                StartDrawing();
+                StartDrawing(hit.point);
             }
 
             if (_isDrawing && Input.GetMouseButton(0) && isGroundHit)
@@ -61,21 +79,20 @@ namespace Dana
                 AddPoint(hit.point);
             }
 
-            if (Input.GetMouseButtonUp(0) && !_isClearing)
+            if (Input.GetMouseButtonUp(0))
             {
-                StartCoroutine(ClearLineWithDelay());
+                FinishLine();
             }
         }
 
         /// <summary>
         /// Starts a new line when the player begins drawing.
         /// </summary>
-        private void StartDrawing()
+        private void StartDrawing(Vector3 startPoint)
         {
             _isDrawing = true;
-            _isClearing = false;
 
-            GameObject line = Instantiate(lineRendererPrefab, transform.position, transform.rotation);
+            GameObject line = Instantiate(lineRendererPrefab, startPoint, Quaternion.identity);
             _currentLine = line.GetComponent<LineRenderer>();
             _linePoints.Clear();
 
@@ -83,6 +100,7 @@ namespace Dana
             _currentLine.sortingOrder = 10;
 
             _currentLine.transform.SetParent(transform, true);
+            activeLines.Add(_currentLine);
         }
 
         /// <summary>
@@ -92,9 +110,9 @@ namespace Dana
         {
             if (_linePoints.Count == 0 || Vector3.Distance(worldPosition, _linePoints[_linePoints.Count - 1]) > 0.1f)
             {
-                if (CheckWallCollision(worldPosition) && !_isClearing)
+                if (CheckWallCollision(worldPosition))
                 {
-                    StartCoroutine(ClearLineWithDelay());
+                    FinishLine();
                     return;
                 }
 
@@ -105,22 +123,35 @@ namespace Dana
         }
 
         /// <summary>
-        /// Clears the line after a delay while changing its color to signify line deleting feedback.
+        /// Prepares the line to be deleted by marking it as a finished line.
         /// </summary>
-        private IEnumerator ClearLineWithDelay()
+        private void FinishLine()
         {
-            _isClearing = true;
-
             if (_currentLine != null)
             {
-                _currentLine.material.color = incorrectLineCOlour;
+                StartCoroutine(ClearLineWithDelay(_currentLine));
+                _currentLine = null;
+                _linePoints.Clear();
+                _isDrawing = false;
+            }
+        }
+
+        /// <summary>
+        /// Clears the line after a delay while changing its color to signify line deleting feedback.
+        /// </summary>
+        private IEnumerator ClearLineWithDelay(LineRenderer line)
+        {
+            if (line != null)
+            {
+                line.material.color = incorrectLineColour;
 
                 yield return new WaitForSeconds(clearDelay);
 
-                Destroy(_currentLine.gameObject);
-                _linePoints.Clear();
-                _isDrawing = false;
-                _isClearing = false;
+                if (line != null)
+                {
+                    activeLines.Remove(line);
+                    Destroy(line.gameObject);
+                }
             }
         }
 
