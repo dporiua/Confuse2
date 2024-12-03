@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class CitizensWalking : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] AudioClip WalkingSound;
+    [SerializeField] AudioClip CarSound;
+    [SerializeField] AudioSource audioSource;
+
+    public void PlayCitizenSounds()
     {
-        
+        audioSource.clip = WalkingSound;
+        audioSource.Play();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StopCitizenSounds()
     {
-        
+        audioSource.Stop();
+    }
+
+    public void PlayCarSounds()
+    {
+        audioSource.clip = CarSound;
+        audioSource.Play();
+    }
+
+    public void StopCarSounds()
+    {
+        audioSource.Stop();
     }
 }

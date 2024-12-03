@@ -37,6 +37,11 @@ public class TrafficLightLogic : MonoBehaviour
 
     private enum GameState { WaitingForRed, WaitingForGreen }
     private GameState _currentState = GameState.WaitingForRed;
+
+    /// <summary>
+    /// Script for Audio Source
+    /// </summary>
+    [SerializeField] CitizensWalking citizensWalking;
     #endregion
 
     private void Start()
@@ -58,6 +63,8 @@ public class TrafficLightLogic : MonoBehaviour
                         _currentState = GameState.WaitingForGreen;
                         _firstStopTime = Time.time;
                         StartCoroutine(PauseAndFlash(4f));
+                        citizensWalking.PlayCitizenSounds();
+                        citizensWalking.StopCarSounds();
                     }
                     else
                     {
@@ -71,11 +78,13 @@ public class TrafficLightLogic : MonoBehaviour
                         float timeSinceRed = Time.time - _firstStopTime;
                         if (timeSinceRed >= 6f)
                         {
+                            citizensWalking.StopCitizenSounds();
                             SceneManager.LoadScene("Level05");
                         }
                         else
                         {
                             ResetProgress();
+                            citizensWalking.StopCitizenSounds();
                         }
                     }
                     else
