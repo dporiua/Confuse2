@@ -10,8 +10,8 @@ namespace Dana
 
     public class WinCondition : MonoBehaviour
     {
-        public void LoadNextLevel()
-        {
+        public void OnMouseClick()
+        { 
             SceneManager.LoadScene(7);
         }
     }
