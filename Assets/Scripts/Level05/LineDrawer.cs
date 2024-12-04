@@ -9,10 +9,10 @@ namespace Dana
     /// It uses LineRenderer to render line points and deletes the line
     /// Changes material colour after a short delay as well. 
     /// </summary>
- 
+
     public class LineDrawer : MonoBehaviour
     {
-        #region Variables
+        #region Variables 
         [Tooltip("Assign any object which contains a line renderer component into this slot.")]
         [SerializeField] private GameObject lineRendererPrefab;
         [Tooltip("Assign the camera that is used to render the maze view here.")]
@@ -36,7 +36,7 @@ namespace Dana
         [Tooltip("Assign a End empty GameObject with a collider.")]
         [SerializeField] private GameObject endGameObject;
 
-        private List<LineRenderer> activeLines = new List<LineRenderer>();
+        private List<LineRenderer> _activeLines = new List<LineRenderer>();
         private LineRenderer _currentLine;
         private List<Vector3> _linePoints = new List<Vector3>();
         private bool _isDrawing = false;
@@ -56,14 +56,14 @@ namespace Dana
         /// </summary>
         public void ClearAllLines()
         {
-            foreach (var line in activeLines)
+            foreach (var line in _activeLines)
             {
                 if (line != null)
                 {
                     Destroy(line.gameObject);
                 }
             }
-            activeLines.Clear();
+            _activeLines.Clear();
         }
         #endregion
 
@@ -84,6 +84,14 @@ namespace Dana
                     _startedFromStart = true;
                     StartDrawing(hit.point);
                 }
+                else
+                {
+                    FinishLine();
+                }
+            }
+            if (Input.GetMouseButtonDown(0) && !isGroundHit)
+            {
+                FinishLine();
             }
 
             if (_isDrawing && Input.GetMouseButton(0) && isGroundHit)
@@ -119,7 +127,7 @@ namespace Dana
             _currentLine.sortingOrder = 10;
 
             _currentLine.transform.SetParent(transform, true);
-            activeLines.Add(_currentLine);
+            _activeLines.Add(_currentLine);
         }
 
         /// <summary>
@@ -167,7 +175,7 @@ namespace Dana
 
                 if (line != null)
                 {
-                    activeLines.Remove(line);
+                    _activeLines.Remove(line);
                     Destroy(line.gameObject);
                 }
             }

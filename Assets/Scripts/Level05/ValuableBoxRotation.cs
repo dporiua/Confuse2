@@ -13,7 +13,7 @@ namespace Dana
     {
         #region Variables
         [Tooltip("Change the speed of object rotation by changing the value. The higher the number, the faster the rotation.")]
-        [SerializeField] private float rotationSpeed = 50f; 
+        [SerializeField] private float rotationSpeed = 30f;
 
         private bool isDragging = false;
         private Vector3 lastMousePosition;

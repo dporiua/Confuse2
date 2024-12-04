@@ -3031,6 +3031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 50
+  lineDrawer: {fileID: 147706743}
 --- !u!65 &9142837098984252177
 BoxCollider:
   m_ObjectHideFlags: 0
