@@ -9,7 +9,7 @@ namespace Dana
     /// It uses LineRenderer to render line points and deletes the line
     /// Changes material colour after a short delay as well. 
     /// </summary>
-
+ 
     public class LineDrawer : MonoBehaviour
     {
         #region Variables
@@ -30,10 +30,17 @@ namespace Dana
         [Tooltip("Assign a colour from the colour wheel to represent line error colour")]
         [SerializeField] private Color incorrectLineColour = Color.red;
 
+        [Header("Start and End Points")]
+        [Tooltip("Assign a Start empty GameObject with a collider.")]
+        [SerializeField] private GameObject startGameObject;
+        [Tooltip("Assign a End empty GameObject with a collider.")]
+        [SerializeField] private GameObject endGameObject;
+
         private List<LineRenderer> activeLines = new List<LineRenderer>();
         private LineRenderer _currentLine;
         private List<Vector3> _linePoints = new List<Vector3>();
         private bool _isDrawing = false;
+        private bool _startedFromStart = false;
 
         #endregion
 
@@ -71,7 +78,12 @@ namespace Dana
 
             if (Input.GetMouseButtonDown(0) && isGroundHit)
             {
-                StartDrawing(hit.point);
+                if (IsStartPoint(hit))
+                {
+                    Debug.Log("It has hit start.");
+                    _startedFromStart = true;
+                    StartDrawing(hit.point);
+                }
             }
 
             if (_isDrawing && Input.GetMouseButton(0) && isGroundHit)
@@ -81,7 +93,14 @@ namespace Dana
 
             if (Input.GetMouseButtonUp(0))
             {
-                FinishLine();
+                if (IsEndPoint())
+                {
+                    _isDrawing = false;
+                }
+                else
+                {
+                    FinishLine();
+                }
             }
         }
 
@@ -122,9 +141,7 @@ namespace Dana
             }
         }
 
-        /// <summary>
-        /// Prepares the line to be deleted by marking it as a finished line.
-        /// </summary>
+        /// Prepares the line to be deleted by marking it as a finished line which did not follow the game rules to solving a maze.
         private void FinishLine()
         {
             if (_currentLine != null)
@@ -133,6 +150,7 @@ namespace Dana
                 _currentLine = null;
                 _linePoints.Clear();
                 _isDrawing = false;
+                _startedFromStart = false;
             }
         }
 
@@ -163,6 +181,23 @@ namespace Dana
         {
             Collider[] colliders = Physics.OverlapSphere(position, 0.05f, wallLayerMask);
             return colliders.Length > 0;
+        }
+
+        private bool IsStartPoint(RaycastHit hit)
+        {
+            return hit.collider != null && hit.collider.gameObject == startGameObject;
+        }
+
+        private bool IsEndPoint()
+        {
+            if (!_isDrawing || !_startedFromStart) return false;
+
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayerMask))
+            {
+                return hit.collider != null && hit.collider.gameObject == endGameObject;
+            }
+            return false;
         }
         #endregion
         #endregion
