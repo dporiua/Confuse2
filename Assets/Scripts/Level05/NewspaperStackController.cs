@@ -1,10 +1,12 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class NewspaperStackController : MonoBehaviour
 {
-    public Texture[] newspaperTextures; // Newspaper texture array
-    public Renderer newspaperRenderer;
-    private int currentIndex = 0; // Tracks the current newspaper index
+    public Texture[] newspaperTextures; // Array of textures for the newspapers
+    public Renderer newspaperRenderer; // Renderer of the top newspaper
+    public int winningPageIndex; // Index of the newspaper with the word
+    public GameObject winningWordCollider; // Collider positioned over the winning word
+    private int currentIndex = 0; // Tracks the current newspaper index (REMEMBER INDEXES START FROM 0 NOT 1)
 
     void Start()
     {
@@ -12,20 +14,36 @@ public class NewspaperStackController : MonoBehaviour
         if (newspaperTextures.Length > 0)
         {
             newspaperRenderer.material.mainTexture = newspaperTextures[currentIndex];
+            Debug.Log($"Initial Texture: {newspaperTextures[currentIndex].name}");
+        }
+        else
+        {
+            Debug.LogWarning("No textures assigned to the newspaper stack!");
+        }
+
+        // DOUBLE CHECK the winning word collider is initially disabled
+        if (winningWordCollider != null)
+        {
+            winningWordCollider.SetActive(false);
         }
     }
 
     void Update()
     {
         // Detect mouse click
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0)) // Left mouse button
         {
-            // Check if the click hits the newspaper
+            // Check if the click hits the newspaper or the winning word collider
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
+                // Check if the clicked object is the winning word
+                if (winningWordCollider != null && hit.transform == winningWordCollider.transform)
+                {
+                    WinLevel();
+                }
                 // Check if the clicked object is this newspaper stack
-                if (hit.transform == transform)
+                else if (hit.transform == transform)
                 {
                     CycleNewspaper();
                 }
@@ -39,5 +57,26 @@ public class NewspaperStackController : MonoBehaviour
         currentIndex = (currentIndex + 1) % newspaperTextures.Length;
         newspaperRenderer.material.mainTexture = newspaperTextures[currentIndex];
         Debug.Log($"Texture Changed: {newspaperTextures[currentIndex].name}");
+
+        
+        if (currentIndex == winningPageIndex)
+        {
+            if (winningWordCollider != null)
+            {
+                winningWordCollider.SetActive(true);
+            }
+        }
+        else
+        {
+            if (winningWordCollider != null)
+            {
+                winningWordCollider.SetActive(false);
+            }
+        }
+    }
+
+    private void WinLevel()
+    {
+        SceneManager.LoadScene(5);
     }
 }
