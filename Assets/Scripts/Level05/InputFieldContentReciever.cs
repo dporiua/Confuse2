@@ -22,7 +22,7 @@ namespace Dana
         {
             if (_enteredText == "A Maze" || _enteredText == "A maze") 
             {
-                SceneManager.LoadScene(5);
+                //SceneManager.LoadScene(5);
             }
         }
         public void GetInputText()
