@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class KeyBoard : MonoBehaviour
@@ -46,6 +47,10 @@ public class KeyBoard : MonoBehaviour
     [SerializeField] TMP_Text ComputerMessage;
     [SerializeField] TMP_Text PlayerCharactersDisplay;
 
+    public void Start()
+    {
+        SolverMessage.text = " ";
+    }
     public void KeyA()
     {
         PlayerCharacters += "A";
@@ -202,9 +207,8 @@ public class KeyBoard : MonoBehaviour
             ComputerMessage.text = " ";
 
             //Have to write for the player to know to press escape
-            SolverMessage.text = " ";
-
-            
+            SolverMessage.text = "Click the Escape Button";
+  
         }
         else
         {
@@ -216,9 +220,11 @@ public class KeyBoard : MonoBehaviour
     {
         if (flag == 1)
         {
-            //WinCondition
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(7);
+            }
         }
-
     }
 }
 
