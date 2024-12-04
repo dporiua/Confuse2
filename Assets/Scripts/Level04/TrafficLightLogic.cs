@@ -76,7 +76,7 @@ public class TrafficLightLogic : MonoBehaviour
                     if (_currentGlowingSprite == "Green")
                     {
                         float timeSinceRed = Time.time - _firstStopTime;
-                        if (timeSinceRed >= 6f)
+                        if (timeSinceRed >= 3f)
                         {
                             citizensWalking.StopCitizenSounds();
                             SceneManager.LoadScene("Level05");
