@@ -16,7 +16,6 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /// endGamePanel.SetActive(false);
         countdown = _initialCountdown;
     }
 
