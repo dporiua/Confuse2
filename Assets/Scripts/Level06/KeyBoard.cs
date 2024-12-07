@@ -41,173 +41,170 @@ public class KeyBoard : MonoBehaviour
     public string PlayerCharacters;
     public string PuzzleSolver = "ESCAPE";
     
-    private int flag = 0;
-
     [SerializeField] TMP_Text SolverMessage;
-    [SerializeField] TMP_Text ComputerMessage;
     [SerializeField] TMP_Text PlayerCharactersDisplay;
 
     public void Start()
     {
+        //PlayerCharactersDisplay.text = ("Type the Code:" );
         SolverMessage.text = " ";
     }
     public void KeyA()
     {
         PlayerCharacters += "A";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyB()
     {
         PlayerCharacters += "B";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyC()
     {
         PlayerCharacters += "C";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
     public void KeyD()
     {
         PlayerCharacters += "D";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyE()
     {
         PlayerCharacters += "E";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyF()
     {
         PlayerCharacters += "F";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
     public void KeyG()
     {
         PlayerCharacters += "G";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
     public void KeyH()
     {
         PlayerCharacters += "H";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
     public void KeyI()
     {
         PlayerCharacters += "I";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
     public void KeyJ()
     {
         PlayerCharacters += "J";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyK()
     {
         PlayerCharacters += "K";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyL()
     {
         PlayerCharacters += "L";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyM()
     {
         PlayerCharacters += "M";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyN()
     {
         PlayerCharacters += "N";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyO()
     {
         PlayerCharacters += "O";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyP()
     {
         PlayerCharacters += "P";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyQ()
     {
         PlayerCharacters += "Q";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyR()
     {
         PlayerCharacters += "R";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyS()
     {
         PlayerCharacters += "S";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyT()
     {
         PlayerCharacters += "T";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyU()
     {
         PlayerCharacters += "U";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyV()
     {
         PlayerCharacters += "V";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
     public void KeyW()
     {
         PlayerCharacters += "W";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyX()
     {
         PlayerCharacters += "X";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
     public void KeyY()
     {
         PlayerCharacters += "Y";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
     public void KeyZ()
     {
         PlayerCharacters += "Z";
-        PlayerCharactersDisplay.text = PlayerCharacters;
+        PlayerCharactersDisplay.text = ("Type the Code:" + PlayerCharacters);
     }
 
     public void KeyEnter()
     {
         if (PlayerCharacters == PuzzleSolver)
         {
-            flag = 1;
-            ComputerMessage.text = " ";
+            PlayerCharactersDisplay.text = " ";
 
             //Have to write for the player to know to press escape
-            SolverMessage.text = "Click the Escape Button";
+            SolverMessage.text = "Escape the Game";
   
         }
         else
@@ -216,14 +213,11 @@ public class KeyBoard : MonoBehaviour
         }
     }
     
-    public void KeyEscape()
+    public void Update()
     {
-        if (flag == 1)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                SceneManager.LoadScene(7);
-            }
+            SceneManager.LoadScene(7);
         }
     }
 }
