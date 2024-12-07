@@ -16,22 +16,31 @@ namespace Dana
         #region Variables.
         public TMP_InputField inputField;
 
-        [SerializeField] private TMP_Text gameDesc;
+        [SerializeField] private TMP_Text instructionText;
 
         private string _enteredText;
         #endregion
 
         private void Update()
         {
-            if (_enteredText == "A Maze" || _enteredText == "A maze") 
+            if (_enteredText == "A Maze" || _enteredText == "A maze" || _enteredText == "a maze") 
             {
-                gameDesc.text = "No silly, Read your news!";
+                instructionText.text = "Rotate the box. Didn't I say the solution IS a maze?";
             }
         }
         public void GetInputText()
         {
             _enteredText = inputField.text;
             Debug.Log("Player typed: " + _enteredText);
+            Invoke("ClearEnteredText", 2f);
+        }
+
+        /// <summary>
+        /// Helps the line drawer script edit the text.
+        /// </summary>
+        private void ClearEnteredText()
+        {
+            _enteredText = string.Empty;
         }
     }
 }

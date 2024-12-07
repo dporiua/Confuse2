@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Dana
@@ -35,6 +36,8 @@ namespace Dana
         [SerializeField] private GameObject startGameObject;
         [Tooltip("Assign a End empty GameObject with a collider.")]
         [SerializeField] private GameObject endGameObject;
+
+        [SerializeField] private TMP_Text instructionText;
 
         private List<LineRenderer> _activeLines = new List<LineRenderer>();
         private LineRenderer _currentLine;
@@ -104,6 +107,7 @@ namespace Dana
                 if (IsEndPoint())
                 {
                     _isDrawing = false;
+                    instructionText.text = "a maze is buried in a proze."; 
                 }
                 else
                 {
