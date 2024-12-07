@@ -15,6 +15,9 @@ namespace Dana
     {
         #region Variables.
         public TMP_InputField inputField;
+
+        [SerializeField] private TMP_Text gameDesc;
+
         private string _enteredText;
         #endregion
 
@@ -22,7 +25,7 @@ namespace Dana
         {
             if (_enteredText == "A Maze" || _enteredText == "A maze") 
             {
-                //SceneManager.LoadScene(5);
+                gameDesc.text = "No silly, Read your news!";
             }
         }
         public void GetInputText()
