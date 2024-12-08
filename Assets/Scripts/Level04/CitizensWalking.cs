@@ -16,6 +16,7 @@ public class CitizensWalking : MonoBehaviour
 
     public void StopCitizenSounds()
     {
+        audioSource.clip = WalkingSound;
         audioSource.Stop();
     }
 
@@ -27,6 +28,7 @@ public class CitizensWalking : MonoBehaviour
 
     public void StopCarSounds()
     {
+        audioSource.clip = CarSound;
         audioSource.Stop();
     }
 }

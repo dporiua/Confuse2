@@ -42,6 +42,18 @@ public class TrafficLightLogic : MonoBehaviour
     /// Script for Audio Source
     /// </summary>
     [SerializeField] CitizensWalking citizensWalking;
+
+    /// <summary>
+    /// Variables for Animator
+    /// </summary>
+    [SerializeField] private Animator Citizens;
+    [SerializeField] private Animator Car;
+
+    private string Citizensmoving = "CitizensMoving";
+    private string Citizensreset = "CitizensPositionReset";
+
+    private string Carmoving = "CarsMoving";
+    private string Carsgoingback = "CarsGoingBack";
     #endregion
 
     private void Start()
@@ -63,12 +75,14 @@ public class TrafficLightLogic : MonoBehaviour
                         _currentState = GameState.WaitingForGreen;
                         _firstStopTime = Time.time;
                         StartCoroutine(PauseAndFlash(4f));
+                        Citizens.Play(Citizensmoving, 0, 5.0f);
                         citizensWalking.PlayCitizenSounds();
                         citizensWalking.StopCarSounds();
                     }
                     else
                     {
                         ResetProgress();
+                        citizensWalking.StopCitizenSounds();
                     }
                     break;
 
@@ -78,18 +92,23 @@ public class TrafficLightLogic : MonoBehaviour
                         float timeSinceRed = Time.time - _firstStopTime;
                         if (timeSinceRed >= 3f)
                         {
+                            citizensWalking.PlayCarSounds();
+                            Car.Play(Carmoving, 0, 0.0f);
                             citizensWalking.StopCitizenSounds();
                             SceneManager.LoadScene("Level05");
                         }
                         else
                         {
                             ResetProgress();
+                            Citizens.Play(Citizensreset, 0, 5.0f);
                             citizensWalking.StopCitizenSounds();
+                            Car.Play(Carsgoingback, 0, 0.0f);
                         }
                     }
                     else
                     {
                         ResetProgress();
+                        citizensWalking.StopCitizenSounds();
                     }
                     break;
             }
