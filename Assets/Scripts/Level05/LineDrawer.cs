@@ -107,7 +107,7 @@ namespace Dana
                 if (IsEndPoint())
                 {
                     _isDrawing = false;
-                    instructionText.text = "a maze is buried in a proze."; 
+                    instructionText.text = "Its wonderful how written text can Amaze you."; 
                 }
                 else
                 {
