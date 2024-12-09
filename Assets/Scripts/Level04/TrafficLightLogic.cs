@@ -49,11 +49,11 @@ public class TrafficLightLogic : MonoBehaviour
     [SerializeField] private Animator Citizens;
     [SerializeField] private Animator Car;
 
-    private string Citizensmoving = "CitizensMoving";
-    private string Citizensreset = "CitizensPositionReset";
+    private string isPlayerMoving = "IsPlayerMoving";
+    private string isPlayerGoingBack = "IsPlayerGoingBack";
 
-    private string Carmoving = "CarsMoving";
-    private string Carsgoingback = "CarsGoingBack";
+    private string isCarMoving = "IsCarMoving";
+
     #endregion
 
     private void Start()
@@ -74,14 +74,18 @@ public class TrafficLightLogic : MonoBehaviour
                     {
                         _currentState = GameState.WaitingForGreen;
                         _firstStopTime = Time.time;
-                        StartCoroutine(PauseAndFlash(4f));
-                        Citizens.Play(Citizensmoving, 0, 5.0f);
+                        StartCoroutine(PauseAndFlash(2f));
+
+                        Citizens.SetBool(isPlayerMoving, true);
+                        Citizens.SetBool(isPlayerGoingBack, false);
                         citizensWalking.PlayCitizenSounds();
                         citizensWalking.StopCarSounds();
                     }
                     else
                     {
                         ResetProgress();
+                        Citizens.SetBool(isPlayerGoingBack, true);
+                        Citizens.SetBool(isPlayerMoving, false);
                         citizensWalking.StopCitizenSounds();
                     }
                     break;
@@ -90,29 +94,33 @@ public class TrafficLightLogic : MonoBehaviour
                     if (_currentGlowingSprite == "Green")
                     {
                         float timeSinceRed = Time.time - _firstStopTime;
-                        if (timeSinceRed >= 3f)
+
+                        if (timeSinceRed >= 4f)
                         {
+                            Car.SetBool(isCarMoving, true);
+
                             citizensWalking.PlayCarSounds();
-                            Car.Play(Carmoving, 0, 0.0f);
                             citizensWalking.StopCitizenSounds();
-                            SceneManager.LoadScene("Level05");
+
+                            StartCoroutine(LoadNextSceneAfterCarAnimation(3f));
                         }
                         else
                         {
                             ResetProgress();
-                            Citizens.Play(Citizensreset, 0, 5.0f);
+                            Citizens.SetBool(isPlayerGoingBack, true);
+                            Citizens.SetBool(isPlayerMoving, false);
                             citizensWalking.StopCitizenSounds();
-                            Car.Play(Carsgoingback, 0, 0.0f);
                         }
                     }
                     else
                     {
                         ResetProgress();
+                        Citizens.SetBool(isPlayerGoingBack, true);
+                        Citizens.SetBool(isPlayerMoving, false);
                         citizensWalking.StopCitizenSounds();
                     }
                     break;
             }
-
         }
     }
 
@@ -132,8 +140,8 @@ public class TrafficLightLogic : MonoBehaviour
         sprite.sprite = glowing;
 
         _currentGlowingSprite = spriteName;
-
     }
+    #endregion
 
     #region IEnumerators
     private IEnumerator GlowCycle()
@@ -216,6 +224,10 @@ public class TrafficLightLogic : MonoBehaviour
             yield return null;
         }
     }
-    #endregion
+    private IEnumerator LoadNextSceneAfterCarAnimation(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene("Level05");
+    }
     #endregion
 }
