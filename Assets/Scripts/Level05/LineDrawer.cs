@@ -27,7 +27,7 @@ namespace Dana
 
         [Header("Line Settings")]
         [Tooltip("Delay time before the line is cleared.")]
-        [SerializeField] private float clearDelay = 0.6f;
+        [SerializeField] private float clearDelay = 0.4f;
         [Tooltip("Assign a colour from the colour wheel to represent line error colour")]
         [SerializeField] private Color incorrectLineColour = Color.red;
 
@@ -81,7 +81,7 @@ namespace Dana
 
             if (Input.GetMouseButtonDown(0) && isGroundHit)
             {
-                if (IsStartPoint(hit))
+                if (IsStartPoint(hit) && _activeLines.Count < 1)
                 {
                     Debug.Log("It has hit start.");
                     _startedFromStart = true;

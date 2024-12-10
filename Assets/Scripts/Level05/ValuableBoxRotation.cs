@@ -57,7 +57,7 @@ namespace Dana
             Vector3 deltaMousePosition = currentMousePosition - lastMousePosition;
 
             float rotationX = -deltaMousePosition.y * rotationSpeed * Time.deltaTime;
-            float rotationY = deltaMousePosition.x * rotationSpeed * Time.deltaTime;
+            float rotationY = -deltaMousePosition.x * rotationSpeed * Time.deltaTime;
 
             transform.Rotate(rotationX, rotationY, 0, Space.World); 
 
