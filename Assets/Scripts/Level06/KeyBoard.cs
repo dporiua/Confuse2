@@ -45,7 +45,7 @@ namespace Leon
 
         public void Start()
         {
-            //PlayerCharactersDisplay.text = ("Type the Code:" );
+            PlayerCharactersDisplay.text = ("Type the Code:" );
             SolverMessage.text = " ";
         }
         public void KeyA()
@@ -203,12 +203,13 @@ namespace Leon
                 PlayerCharactersDisplay.text = " ";
 
                 //Have to write for the player to know to press escape
-                SolverMessage.text = "Escape the Game";
+                SolverMessage.text = "Escape the Reality";
 
             }
             else
             {
                 PlayerCharacters = string.Empty;
+                PlayerCharactersDisplay.text = ("Type the Code:");
             }
         }
     }
