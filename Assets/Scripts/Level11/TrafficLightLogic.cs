@@ -27,6 +27,8 @@ public class TrafficLightLogic : MonoBehaviour
     public Sprite greenNormal;
     [Tooltip("Place the glowing state of the Green traffic light here")]
     public Sprite greenGlowing;
+    [Tooltip("Place the error sprite in this slot")]
+    public Sprite errorSprite;
 
     [Tooltip("Place the win panel in this slot")]
     [SerializeField] private GameObject winPanel;
@@ -38,8 +40,9 @@ public class TrafficLightLogic : MonoBehaviour
     private float _firstStopTime = 0f;
     private bool _isPaused = false;
     private Coroutine _spriteFlashCoroutine = null;
+    private Coroutine _errorFlashCoroutine = null;
 
-    private enum GameState { WaitingForRed, WaitingForGreen }
+    private enum GameState { WaitingForRed, WaitingForGreen, Error }
     private GameState _currentState = GameState.WaitingForRed;
 
     /// <summary>
@@ -88,35 +91,24 @@ public class TrafficLightLogic : MonoBehaviour
                     }
                     else
                     {
-                        ResetProgress();
-                        Citizens.SetBool(isPlayerGoingBack, true);
-                        Citizens.SetBool(isPlayerMoving, false);
-                        citizensWalking.StopCitizenSounds();
+                        TriggerErrorState();
                     }
                     break;
 
                 case GameState.WaitingForGreen:
-                    if (_currentGlowingSprite == "Green")
+                    if (_currentGlowingSprite == "Green" && (Time.time - _firstStopTime) >= 4.5f)
                     {
-                        float timeSinceRed = Time.time - _firstStopTime;
+                        Car.SetBool(isCarMoving, true);
 
-                        if (timeSinceRed >= 4f)
-                        {
-                            Car.SetBool(isCarMoving, true);
+                        citizensWalking.PlayCarSounds();
+                        citizensWalking.StopCitizenSounds();
+                        StartCoroutine(PauseAndFlash(2f));
 
-                            citizensWalking.PlayCarSounds();
-                            citizensWalking.StopCitizenSounds();
-                            StartCoroutine(PauseAndFlash(2f));
-
-                            StartCoroutine(LoadWinPanelAfterCarAnimation(3f));
-                        }
-                        else
-                        {
-                            ResetProgress();
-                            Citizens.SetBool(isPlayerGoingBack, true);
-                            Citizens.SetBool(isPlayerMoving, false);
-                            citizensWalking.StopCitizenSounds();
-                        }
+                        StartCoroutine(LoadWinPanelAfterCarAnimation(3f));
+                    }
+                    else if (_currentGlowingSprite == "Green" || _currentGlowingSprite == "Orange")
+                    {
+                        TriggerErrorState();
                     }
                     else
                     {
@@ -130,7 +122,26 @@ public class TrafficLightLogic : MonoBehaviour
         }
     }
 
-    #region Public Functions.
+    private void TriggerErrorState()
+    {
+        if (_spriteFlashCoroutine != null)
+            StopCoroutine(_spriteFlashCoroutine);
+        _spriteFlashCoroutine = null;
+
+        if (_errorFlashCoroutine != null)
+            StopCoroutine(_errorFlashCoroutine);
+
+        Citizens.SetBool(isPlayerGoingBack, true);
+        Citizens.SetBool(isPlayerMoving, false);
+        citizensWalking.StopCitizenSounds();
+
+        _currentState = GameState.Error;
+        _isPaused = true;
+
+        _errorFlashCoroutine = StartCoroutine(ErrorFlashSequence(3f));
+    }
+
+    #region Public Functions
     public void GoToMainmenu()
     {
         SceneManager.LoadScene(0);
@@ -143,7 +154,7 @@ public class TrafficLightLogic : MonoBehaviour
     }
     #endregion
 
-    #region Private Functions.
+    #region Private Functions
     private void ResetProgress()
     {
         _currentState = GameState.WaitingForRed;
@@ -231,6 +242,30 @@ public class TrafficLightLogic : MonoBehaviour
                 yield return new WaitForSeconds(0.25f);
             }
         }
+    }
+
+    private IEnumerator ErrorFlashSequence(float duration)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            redSprite.sprite = errorSprite;
+            orangeSprite.sprite = errorSprite;
+            greenSprite.sprite = errorSprite;
+            yield return new WaitForSeconds(0.25f);
+
+            redSprite.sprite = redNormal;
+            orangeSprite.sprite = orangeNormal;
+            greenSprite.sprite = greenNormal;
+            yield return new WaitForSeconds(0.25f);
+
+            elapsedTime += 0.5f;
+        }
+
+        ResetProgress();
+        _currentState = GameState.WaitingForRed;
+        _isPaused = false;
     }
 
     private IEnumerator WaitForUnpaused(float duration)
