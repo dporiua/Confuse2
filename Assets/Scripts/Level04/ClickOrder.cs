@@ -211,7 +211,7 @@ namespace Dyson.Dana
                 yield return new WaitForSeconds(flashDuration);
             }
 
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(4);
         }
     }
 }
