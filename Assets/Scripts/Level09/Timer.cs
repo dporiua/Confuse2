@@ -36,7 +36,7 @@ public class Timer : MonoBehaviour
         if (countdown <= 0)
         {
             // endGamePanel.SetActive(true);
-            SceneManager.LoadScene("Level04");
+            SceneManager.LoadScene(10);
         }
     }
 
@@ -44,10 +44,5 @@ public class Timer : MonoBehaviour
     {
         countdown -= 100;
         if (countdown < 0) countdown = 0;
-    }
-
-    public void BackToMainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
     }
 }

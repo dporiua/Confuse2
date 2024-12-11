@@ -77,7 +77,6 @@ public class NewspaperStackController : MonoBehaviour
 
     private void WinLevel()
     {
-        SceneManager.LoadScene("Level06");
-        
+        SceneManager.LoadScene(11);
     }
 }

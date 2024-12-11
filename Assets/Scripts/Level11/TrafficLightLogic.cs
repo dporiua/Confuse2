@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +27,9 @@ public class TrafficLightLogic : MonoBehaviour
     public Sprite greenNormal;
     [Tooltip("Place the glowing state of the Green traffic light here")]
     public Sprite greenGlowing;
+
+    [Tooltip("Place the win panel in this slot")]
+    [SerializeField] private GameObject winPanel;
 
     /// <summary>
     /// These variables are used to track displayed sprites 
@@ -59,6 +63,7 @@ public class TrafficLightLogic : MonoBehaviour
     private void Start()
     {
         StartCoroutine(GlowCycle());
+        winPanel.SetActive(false);
     }
 
     private void Update()
@@ -103,7 +108,7 @@ public class TrafficLightLogic : MonoBehaviour
                             citizensWalking.StopCitizenSounds();
                             StartCoroutine(PauseAndFlash(2f));
 
-                            StartCoroutine(LoadNextSceneAfterCarAnimation(3f));
+                            StartCoroutine(LoadWinPanelAfterCarAnimation(3f));
                         }
                         else
                         {
@@ -124,6 +129,19 @@ public class TrafficLightLogic : MonoBehaviour
             }
         }
     }
+
+    #region Public Functions.
+    public void GoToMainmenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        EditorApplication.isPaused = true;
+    }
+    #endregion
 
     #region Private Functions.
     private void ResetProgress()
@@ -225,10 +243,10 @@ public class TrafficLightLogic : MonoBehaviour
             yield return null;
         }
     }
-    private IEnumerator LoadNextSceneAfterCarAnimation(float delay)
+    private IEnumerator LoadWinPanelAfterCarAnimation(float delay)
     {
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene("Level05");
+        winPanel.SetActive(true);
     }
     #endregion
 }

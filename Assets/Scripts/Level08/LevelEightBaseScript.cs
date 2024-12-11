@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Lvl01
+namespace Lvl08
 {
-    public class LevelOneBaseScript : MonoBehaviour
+    public class LevelEightBaseScript : MonoBehaviour
     {
         #region Variables.
         public List<Transform> cups;

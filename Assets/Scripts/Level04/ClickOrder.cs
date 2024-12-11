@@ -33,7 +33,7 @@ namespace Dyson.Dana
         {
             if (endOfList == 7)
             {
-                SceneManager.LoadScene("Level03");
+                SceneManager.LoadScene(5);
             }
         }
 

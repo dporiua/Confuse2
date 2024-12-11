@@ -1,12 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
-namespace Lvl01
+namespace Lvl08
 {
     public class CupController : MonoBehaviour
     {
         #region Variables.
-        [SerializeField] private LevelOneBaseScript _lOneGameBaseScript;
+        [SerializeField] private LevelEightBaseScript _lEightGameBaseScript;
         private SpriteRenderer _spriteRenderer;
         private Color _originalColor;
         private Color _highlightInspectorColor = Color.yellow;
@@ -31,7 +31,7 @@ namespace Lvl01
         #region Public Functions.
         public void OnCupSelected()
         {
-            _lOneGameBaseScript.OnCupSelected(transform);
+            _lEightGameBaseScript.OnCupSelected(transform);
         }
 
         public void TransformCupUp()

@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelOneWinCondition : MonoBehaviour
+public class LevelEightWinCondition : MonoBehaviour
 {
     private void OnMouseDown()
     {
-        SceneManager.LoadScene("Level02");
+        SceneManager.LoadScene(9);
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Lvl01
+namespace Lvl08
 { 
     public class CupsShuffleLogic : MonoBehaviour
     {

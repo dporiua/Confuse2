@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3ee9e0d7b3f644a95f8a7a3d69a6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lOneGameBaseScript: {fileID: 1078229104}
+  _lEightGameBaseScript: {fileID: 1078229107}
   showBallLocation: 0
 --- !u!114 &435475269
 MonoBehaviour:
@@ -769,7 +769,7 @@ GameObject:
   - component: {fileID: 521593946}
   - component: {fileID: 521593947}
   m_Layer: 0
-  m_Name: TemporaryXSprite
+  m_Name: XSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -889,7 +889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3ee9e0d7b3f644a95f8a7a3d69a6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lOneGameBaseScript: {fileID: 1078229104}
+  _lEightGameBaseScript: {fileID: 1078229107}
   showBallLocation: 0
 --- !u!114 &615254987
 MonoBehaviour:
@@ -1190,7 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3ee9e0d7b3f644a95f8a7a3d69a6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lOneGameBaseScript: {fileID: 1078229104}
+  _lEightGameBaseScript: {fileID: 1078229107}
   showBallLocation: 0
 --- !u!114 &695342461
 MonoBehaviour:
@@ -1512,8 +1512,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078229105}
-  - component: {fileID: 1078229104}
   - component: {fileID: 1078229106}
+  - component: {fileID: 1078229107}
   m_Layer: 0
   m_Name: LevelOneScripts
   m_TagString: Untagged
@@ -1521,29 +1521,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1078229104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078229103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f85073280466b514f9251dd858a6b9e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cups:
-  - {fileID: 695342459}
-  - {fileID: 615254985}
-  - {fileID: 435475267}
-  underCupTransforms:
-  - {fileID: 487257681}
-  - {fileID: 1526028493}
-  - {fileID: 327083979}
-  ballController: {fileID: 1363195743}
-  xMarker: {fileID: 521593945}
-  cupsShuffleLogicScript: {fileID: 1078229106}
 --- !u!4 &1078229105
 Transform:
   m_ObjectHideFlags: 0
@@ -1574,6 +1551,29 @@ MonoBehaviour:
   shuffleSpeed: 2.4
   shuffleSound: {fileID: 8300000, guid: acfaee03937cf984ba68fff344801d02, type: 3}
   location: {fileID: 1979473673}
+--- !u!114 &1078229107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078229103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a4ad4920c7db941be799e34de24415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cups:
+  - {fileID: 695342459}
+  - {fileID: 615254985}
+  - {fileID: 435475267}
+  underCupTransforms:
+  - {fileID: 487257681}
+  - {fileID: 1526028493}
+  - {fileID: 327083979}
+  ballController: {fileID: 1363195743}
+  xMarker: {fileID: 521593945}
+  cupsShuffleLogicScript: {fileID: 1078229106}
 --- !u!1 &1142241154
 GameObject:
   m_ObjectHideFlags: 0
