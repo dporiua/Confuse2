@@ -203,7 +203,7 @@ namespace Leon
                 PlayerCharactersDisplay.text = " ";
 
                 //Have to write for the player to know to press escape
-                SolverMessage.text = "Escape the Reality";
+                SolverMessage.text = "Escape through Reality";
 
             }
             else
