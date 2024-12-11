@@ -101,6 +101,7 @@ public class TrafficLightLogic : MonoBehaviour
 
                             citizensWalking.PlayCarSounds();
                             citizensWalking.StopCitizenSounds();
+                            StartCoroutine(PauseAndFlash(2f));
 
                             StartCoroutine(LoadNextSceneAfterCarAnimation(3f));
                         }
