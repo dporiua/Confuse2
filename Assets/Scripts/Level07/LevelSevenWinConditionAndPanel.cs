@@ -9,7 +9,7 @@ namespace Dana.Leon
     /// Responsible for end game logic.
     /// </summary>
 
-    public class LevelSixWinConditionAndPanel : MonoBehaviour
+    public class LevelSevenWinConditionAndPanel : MonoBehaviour
     {
         #region Variables
         [SerializeField] GameObject endGameCanvas;
