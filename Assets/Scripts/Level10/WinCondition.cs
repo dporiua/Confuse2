@@ -12,7 +12,7 @@ namespace Dana
     {
         public void OnMouseClick()
         { 
-            SceneManager.LoadScene("Level06");
+            SceneManager.LoadScene(11);
         }
     }
 }
