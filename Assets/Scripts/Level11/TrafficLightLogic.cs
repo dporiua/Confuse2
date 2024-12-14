@@ -150,7 +150,7 @@ public class TrafficLightLogic : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-        EditorApplication.isPaused = true;
+        // EditorApplication.isPaused = true;
     }
     #endregion
 
