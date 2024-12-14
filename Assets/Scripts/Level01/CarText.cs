@@ -13,7 +13,7 @@ public class CarText : MonoBehaviour
 
     private void Update()
     {
-        if (_enteredText == "raC"  || _enteredText == "rac"  || _enteredText == "Rac" && Input.GetKeyUp(KeyCode.Return))
+        if (_enteredText == "raC" && Input.GetKeyUp(KeyCode.Return) || _enteredText == "Rac" && Input.GetKeyUp(KeyCode.Return))
         {
             SceneManager.LoadScene(2);
         }
